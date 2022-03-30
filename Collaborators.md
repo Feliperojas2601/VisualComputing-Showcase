@@ -11,4 +11,4 @@ Soy un estudiante de octava matricula de ingenieria de sistemas y computación, 
 ## Jonathan Lopez Castellanos
 
 Estudiante de octavo semestre en la carrera de ingeniería de sistemas, tengo 21 años. Apasionado la arquitectura de software y el diseño del mismo.   
-En mi tiempo libre me dedico a proyectos de sfotware propios, ver series en streaming y escuchar buena música como Paulo Londra.  
+En mi tiempo libre me dedico a proyectos de software propios, ver series en streaming y escuchar buena música como Paulo Londra.  
