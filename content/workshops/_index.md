@@ -7,4 +7,4 @@ menu:
 title: Workshops
 ---
 
-- [Workshop1]({{< relref "/workshops/workshop1" >}})
+- [Workshop 1]({{< relref "/workshops/workshop1" >}})
