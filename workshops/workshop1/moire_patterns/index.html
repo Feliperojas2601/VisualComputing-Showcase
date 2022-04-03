@@ -1,0 +1,67 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Ramp Aftereffect #  a.  p5-instance-div markdown let x = 0; let colorp1, colorp2; let increase = 0;  function setup() {   createCanvas(500, 500);  rectMode(CENTER);  colorp1 = createColorPicker([32, 162, 32]).position(20, 25);  colorp2 = createColorPicker([0, 0, 255]).position(75, 25);  slider = createSlider(0, 2, 0, 0.25);  slider.position(150, 25);  slider.style('width', '80px');  }  function draw() {   background(220);   increase = slider.value();   for (let i = 0; i < 400; i += 20) {   stroke(colorp2."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Ramp Aftereffect #  a.  p5-instance-div markdown let x = 0; let colorp1, colorp2; let increase = 0;  function setup() {   createCanvas(500, 500);  rectMode(CENTER);  colorp1 = createColorPicker([32, 162, 32]).position(20, 25);  colorp2 = createColorPicker([0, 0, 255]).position(75, 25);  slider = createSlider(0, 2, 0, 0.25);  slider.position(150, 25);  slider.style('width', '80px');  }  function draw() {   background(220);   increase = slider.value();   for (let i = 0; i < 400; i += 20) {   stroke(colorp2."><meta property="og:type" content="article"><meta property="og:url" content="https://visualcomputing.github.io/showcase/workshops/workshop1/moire_patterns/"><meta property="article:section" content="workshops"><meta property="article:modified_time" content="2022-04-03T17:16:45-05:00"><title>Moire Patterns | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+<script defer src=/showcase/en.search.min.1d4bfe230a36fb5cb00153af839fae958128a5a901518d9b21e67fe574950b63.js integrity="sha256-HUv+Iwo2+1ywAVOvg5+ulYEopakBUY2bIeZ/5XSVC2M=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>Shortcodes</span><ul><li><a href=/showcase/docs/shortcodes/buttons/>Buttons</a></li><li><a href=/showcase/docs/shortcodes/columns/>Columns</a></li><li><a href=/showcase/docs/shortcodes/details/>Details</a></li><li><a href=/showcase/docs/shortcodes/expand/>Expand</a></li><li><a href=/showcase/docs/shortcodes/hints/>Hints</a></li><li><a href=/showcase/docs/shortcodes/katex/>Katex</a></li><li><a href=/showcase/docs/shortcodes/mermaid/>Mermaid</a></li><li><input type=checkbox id=section-ec67a64aba70b9df3d2a9acd6c92e3bc class=toggle>
+<label for=section-ec67a64aba70b9df3d2a9acd6c92e3bc class="flex justify-between"><a href=/showcase/docs/shortcodes/p5/>P5</a></label><ul><li><a href=/showcase/docs/shortcodes/p5/div/>Div</a></li><li><a href=/showcase/docs/shortcodes/p5/iframe/>Iframe</a></li></ul></li><li><a href=/showcase/docs/shortcodes/tabs/>Tabs</a></li></ul></li></ul><ul><li><a href=/showcase/posts/>Blog</a></li><li><a href=/showcase/workshops/>Workshops</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/showcase/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>Moire Patterns</strong>
+<label for=toc-control><img src=/showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#ramp-aftereffect>Ramp Aftereffect</a></li></ul></li></ul></nav></aside></header><article class=markdown><h2 id=ramp-aftereffect>Ramp Aftereffect
+<a class=anchor href=#ramp-aftereffect>#</a></h2><div style=text-align:justify>a.</div><p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>colorp1</span>, <span style=color:#a6e22e>colorp2</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>increase</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>rectMode</span>(<span style=color:#a6e22e>CENTER</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorp1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>([<span style=color:#ae81ff>32</span>, <span style=color:#ae81ff>162</span>, <span style=color:#ae81ff>32</span>]).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>25</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorp2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>]).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>75</span>, <span style=color:#ae81ff>25</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSlider</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0.25</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>25</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>style</span>(<span style=color:#e6db74>&#39;width&#39;</span>, <span style=color:#e6db74>&#39;80px&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>220</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>increase</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>value</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>400</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>20</span>) {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>stroke</span>(<span style=color:#a6e22e>colorp2</span>.<span style=color:#a6e22e>color</span>());
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>4</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>ellipse</span>(<span style=color:#a6e22e>x</span>, <span style=color:#ae81ff>250</span>, <span style=color:#a6e22e>i</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>380</span>, <span style=color:#a6e22e>i</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>380</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>noFill</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>stroke</span>(<span style=color:#a6e22e>colorp1</span>.<span style=color:#a6e22e>color</span>());
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>4</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>ellipse</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>250</span>, <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>i</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>x</span> <span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>width</span>) {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>increase</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></details><iframe id=moire_patterns style=width:520px;height:550px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=/showcase/sketches/optical_illusions/moire_patterns.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/6c1cd19d33a19a18a09c91ded10298a88f7a4c61 title="Last modified by FelipeRojas | April 3, 2022" target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>April 3, 2022</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#ramp-aftereffect>Ramp Aftereffect</a></li></ul></li></ul></nav></div></aside></main></body></html>
