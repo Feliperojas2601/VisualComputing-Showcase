@@ -70,6 +70,68 @@ function draw() {
 <br/>
 {{< p5-iframe sketch="/showcase/sketches/optical_illusions/stroboscopic_artifacts.js" width="500" height="500" >}}
 
+<div style="text-align: justify">
+
+## Moiré Patterns
+Moiré es una palabra francesa que significa muaré en el español y es una textura o tipo de tejido que genera una visión sobre la seda simulando un entorno acuático y ondulado debido a la manera de su fabricación, que es la superposición de dos textiles húmedos generando un patrón cuando la seda se seca.  
+Esta ilusión optica conocida como Moiré patterns o patrones muaré hace referencia a la superposición de dos patrones similares que están compuestos por rayas opacas ó de color junto con un espacio transaparente. Al encontrarse diferencias en los patrones, la colocación de los mismos, movimientos de rotación o desplazamiento y otros aspectos como aceleración o formatura, es posible generar una especie de bandas oscuras móviles conocidas como moirés. Este efecto no es simplemente aludido en el arte y la animación, sino que, tiene aplicaciones científicas en los campos de matemática y física en donde surgen cálculos con respecto a las formas, rotaciones, aceleraciones, desplazamientos, interferencia de ondas, entre otros más.  
+
+La explicación a detalle de esta ilusión consiste en un fenonemo relativo a la luz y la superposición, pues la luz impacta a ambos patrones que permiten que esta pueda pasar o quedar bloqueada según la forma y/o el color o transparencia en el que se encuentre impactando. Esto genera una multiplicación en las razones de transmitancia de luz y dos frecuencias que a la vista parecen distintas.  
+ 
+La implementación utilizando p5.js realizada para el caso anterior se muestra a continuación: 
+
+</div>
+
+{{< details title="p5-instance-div markdown" open=true >}}
+```js
+let x = 0;
+let colorp1, colorp2;
+let increase = 0;
+
+function setup() {
+
+    createCanvas(500, 500);
+    rectMode(CENTER);
+    colorp1 = createColorPicker([32, 162, 32]).position(20, 25);
+    colorp2 = createColorPicker([0, 0, 255]).position(75, 25);
+    slider = createSlider(0, 2, 0, 0.25);
+    slider.position(150, 25);
+    slider.style('width', '80px');
+
+}
+
+function draw() {
+
+    background(220);
+
+    increase = slider.value();
+
+    for (let i = 0; i < 400; i += 20) {
+
+        stroke(colorp2.color());
+        strokeWeight(4);
+        ellipse(x, 250, i - 380, i - 380);
+
+        noFill();
+        stroke(colorp1.color());
+        strokeWeight(4);
+        ellipse(250, 250, i, i);
+
+    }
+    if (x > width) {
+
+        x = 0;
+
+    } else {
+
+        x = x + increase;
+    }
+}
+```
+{{< /details >}}
+<br/>
+{{< p5-iframe sketch="/showcase/sketches/optical_illusions/moire_patterns.js" width="500" height="500" >}}
+
 <!-- ---
 bookCollapseSection: true
 --- -->
