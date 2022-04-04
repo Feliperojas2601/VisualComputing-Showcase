@@ -6,25 +6,90 @@ title: Workshop1
 
 # Visual phenomena and Optical Illusions
 <div style="text-align: justify">
-Las ilusiones ópticas son distorsiones de los sentidos causadas por el sistema visual, caracterizadas por una percepción que parece diferir de la realidad. Estas pueden revelar cómo el cerebro humano organiza e interpreta normalmente la estimulación sensorial y permiten estudiar las limitaciones de la percepcion visual. Este tipo de "fenómenos" son adaptaciones especialmente buenas de nuestro sistema visual a situaciones de visión estandar; estas adaptaciones al depender de nuestro cerebro pueden provocar interpretaciones inadecuadas
+<!-- Las ilusiones ópticas son distorsiones de los sentidos causadas por el sistema visual, caracterizadas por una percepción que parece diferir de la realidad. Estas pueden revelar cómo el cerebro humano organiza e interpreta normalmente la estimulación sensorial y permiten estudiar las limitaciones de la percepcion visual. Este tipo de "fenómenos" son adaptaciones especialmente buenas de nuestro sistema visual a situaciones de visión estandar; estas adaptaciones al depender de nuestro cerebro pueden provocar interpretaciones inadecuadas
 de la escena visual y dependen de la representación interna de la realidad una vez nuestros ojos han filtrado la información. 
 Michael Bach es un científico alemán que ha investigado ampliamente el campo de la oftalmología y la percepción visual, y su sitio "Optical Illusions & Visual Phenomena" contiene
 un amplio repertorio de ilusiones ópticas que son claramente explicadas y su explicación nos acerca a entender un poco mejor de donde viene la interpretación que se da de estos fenómenos. Bach los clasifica en fenómenos de movimiento y tiempo, iluminación y contraste, color, ilusiones geométricas y angulares, entre otros.     
-Para este trabajo se han seleccionado tres de los fenómenos/ilusiones propuestas por Bach, las cuales se analizarán en detalle y se presentará su correspondiente implementación en JavaScript utilizando la biblioteca de p5.js 
+Para este trabajo se han seleccionado tres de los fenómenos/ilusiones propuestas por Bach, las cuales se analizarán en detalle y se presentará su correspondiente implementación en JavaScript utilizando la biblioteca de p5.js  -->
 
+## Stereokinetic Effect
+El efecto estereocinético consiste en patrones circulares anidados que rotan sobre una plataforma circular.
+Estos círculos, al rotar alrededor de algún eje distinto de la línea de visión de quien los observa,
+permiten extraer la configuración tridimensional del patrón, debido a varias transformaciones ópticas
+que se producen.
+En el ejemplo siguiente, podemos observar cómo al hacer rotar varios círculos externos sobre el eje de la
+plataforma circular, y círculos internos sobre un círculo interno intermedio, en sentido contrario,
+se puede apreciar una ilusión de un objeto tridimensional, y apreciar profundidad mediante los círculos internos.
+
+{{< details title="p5-instance-div markdown" open=false >}}
+```js
+  const frame_rate = 60;
+
+  let show_crater_cb;
+  let show_crater = true;
+  let slider_label;
+
+  function setup() {
+    createCanvas(500, 500);
+    show_crater_cb = createCheckbox('show crater', show_crater);
+    show_crater_cb.changed(() => {
+      show_crater = show_crater_cb.checked();
+    });
+    frames_slider = createSlider(0.5, 5, 1, 0.25);
+    frames_slider.position(180, 515);
+    frames_slider.style('width', '80px');
+    slider_label = createSpan('speed');
+    slider_label.position(135, 513);
+    frameRate(frame_rate);
+  }
+
+  function draw() {
+    background(220);
+    
+    let difference = 40;
+    let inner_diameter = 40;
+    
+    const outer_circles = 11;
+    const start = inner_diameter + outer_circles * difference;
+    const end = inner_diameter;
+    
+    noStroke();
+    
+    let posX = 0, posY = 0;
+    let referenceX = width / 2;
+    let referenceY = height / 2;
+
+    let t, outer_coeff, inner_coef;
+
+    for (let diameter = start, index = 0; diameter >= end; diameter -= difference, index++) {
+      fill(index % 2 === 0 ? color('blue') : color('yellow'));
+      let orientation = index > 6 && show_crater ? -1 : 1;
+      outer_coeff = orientation * index * difference / 2;
+      t = frameCount * frames_slider.value() / frame_rate;
+      posX = referenceX + outer_coeff * cos(t);
+      posY = referenceY + outer_coeff * sin(t);
+      if (index == 6 && show_crater) {
+        inner_coef = diameter / 2 + difference;
+        referenceX = posX + inner_coef * cos(t);
+        referenceY = posY + inner_coef * sin(t);
+      }
+      circle(posX, posY, diameter);
+    }
+  }
+```
+{{< /details >}}
+{{< p5-iframe sketch="/showcase/sketches/optical_illusions/stereokinetic_effect.js" width="520" height="550" >}}
 
 ## Stroboscopic Artifacts
 El primer fenómeno visual consiste de una rueda o disco dividida en tres componentes que inicialmente corresponden cada una a un color primario del modelo RGB (rojo, verde y azul). La rueda gira en la dirección de las manecillas del reloj y a medida que incrementa el ángulo de rotación de esta, al igual que el retardo entre actualizaciones dado en fotogramas se pueden observar interesantes cambios en las tonalidades de la misma, además de la "dirección" del movimiento. En este fenómeno, se pueden evidenciar momentos clave, que aparecen en angulos de 60°, y más claramente 120°, donde la rueda toma valores similares al gris, debido a que cada sector alterna rápidamente entre los tres colores principales, cuya mezcla da como resultado el color evidenciado. Además, si se aumenta el ángulo 5°, parece surgir una "hélice" que gira hacia la derecha, donde cada pala está compuesta de los tres colores complementarios de los principales (magenta, cian y amarillo), por otro lado, si se disminuye en 5°, parece que la hélice gira hacia atrás.
 
-Bach explica tal fenómeno desde la perspectiva del movimiento en las pantallas de ordenador, que cuando se trata de un movimiento rápido sufren del efecto estroboscópico o también denominado aliasing temporal. El aliasing se puede explicar bajo el escenario de que cuando se ve una imagen digital, un dispositivo de visualización, los ojos y el cerebro realizan una reconstrucción; si los datos de la imagen se procesan de alguna manera durante el muestreo o la reconstrucción, la imagen reconstruida diferirá de la imagen original, y se verá un alias que suele sobreponer al original (este efecto se evidencia comúnmente en el muestreo de señales). Por su parte, el efecto estroboscópico se produce cuando el movimiento rotativo continuo u otro movimiento cíclico se representa mediante una serie de muestras cortas o instantáneas (en contraposición a una vista continua) a una frecuencia de muestreo cercana al periodo del movimiento. Esta es la causa del "efecto rueda de carreta", que Bach abarca también en su repertorio, llamado así porque en los videos, las ruedas (como las de los carros de caballos) a veces parecen girar hacia atrás. Para que se produzca tal efecto, es necesario que la pantalla se presente de forma discontinua: puede que no sea visible, pero la rueda (o lo que se presente en la pantalla) se mueve a "tirones"; si estas "sacudidas" se producen con suficiente rapidez (por ejemplo, 20 veces por segundo, o similar al caso de nuestro ejemplo), nuestro sistema visual interpola las posiciones que faltan. Esta interpolación se basa en el principio del "vecino más cercano" y si el desplazamiento del radio de la rueda de un fotograma a otro es tan grande que está más cerca del (antiguo) radio siguiente que del (antiguo) original, nuestro sistema visual asume la dirección de movimiento opuesta.
+<!-- Bach explica tal fenómeno desde la perspectiva del movimiento en las pantallas de ordenador, que cuando se trata de un movimiento rápido sufren del efecto estroboscópico o también denominado aliasing temporal. El aliasing se puede explicar bajo el escenario de que cuando se ve una imagen digital, un dispositivo de visualización, los ojos y el cerebro realizan una reconstrucción; si los datos de la imagen se procesan de alguna manera durante el muestreo o la reconstrucción, la imagen reconstruida diferirá de la imagen original, y se verá un alias que suele sobreponer al original (este efecto se evidencia comúnmente en el muestreo de señales). Por su parte, el efecto estroboscópico se produce cuando el movimiento rotativo continuo u otro movimiento cíclico se representa mediante una serie de muestras cortas o instantáneas (en contraposición a una vista continua) a una frecuencia de muestreo cercana al periodo del movimiento. Esta es la causa del "efecto rueda de carreta", que Bach abarca también en su repertorio, llamado así porque en los videos, las ruedas (como las de los carros de caballos) a veces parecen girar hacia atrás. Para que se produzca tal efecto, es necesario que la pantalla se presente de forma discontinua: puede que no sea visible, pero la rueda (o lo que se presente en la pantalla) se mueve a "tirones"; si estas "sacudidas" se producen con suficiente rapidez (por ejemplo, 20 veces por segundo, o similar al caso de nuestro ejemplo), nuestro sistema visual interpola las posiciones que faltan. Esta interpolación se basa en el principio del "vecino más cercano" y si el desplazamiento del radio de la rueda de un fotograma a otro es tan grande que está más cerca del (antiguo) radio siguiente que del (antiguo) original, nuestro sistema visual asume la dirección de movimiento opuesta.
 
-Bach también menciona la importancia de la frecuencia de fotogramas en el movimiento. El disco no gira suavemente, sino que se presenta en cuadros fijos que se suceden rápidamente, cada uno con un ángulo de rotación diferente, lo que produce la percepción de un movimiento suave, también llamado "Fenómeno Phi" de Wertheimer. Sin embargo, este movimiento depende en gran medida de la tasa de fotogramas, que para el caso predeterminado es de 60 cuadros mostrados por segundo y también entra en juego otro aspecto: la tasa de fotogramas del monitor o la pantalla. Según esto, entonces, lo que se puede apreciar exactamente depende de la interacción de las dos tasas de fotogramas y del incremento del ángulo, donde en variados casos según la configuración se puede evidenciar la "mezcla" de los colores, por el solapamiento de las secciones, además de los efectos ya mencionados. 
+Bach también menciona la importancia de la frecuencia de fotogramas en el movimiento. El disco no gira suavemente, sino que se presenta en cuadros fijos que se suceden rápidamente, cada uno con un ángulo de rotación diferente, lo que produce la percepción de un movimiento suave, también llamado "Fenómeno Phi" de Wertheimer. Sin embargo, este movimiento depende en gran medida de la tasa de fotogramas, que para el caso predeterminado es de 60 cuadros mostrados por segundo y también entra en juego otro aspecto: la tasa de fotogramas del monitor o la pantalla. Según esto, entonces, lo que se puede apreciar exactamente depende de la interacción de las dos tasas de fotogramas y del incremento del ángulo, donde en variados casos según la configuración se puede evidenciar la "mezcla" de los colores, por el solapamiento de las secciones, además de los efectos ya mencionados.  -->
 
 La implementación utilizando p5.js realizada para el caso anterior se muestra a continuación: 
 
-</div>
-
-{{< details title="p5-instance-div markdown" open=true >}}
+{{< details title="p5-instance-div markdown" open=false >}}
 ```js
 let angle = 0;
 let frames;
@@ -68,9 +133,7 @@ function draw() {
 ```
 {{< /details >}}
 <br/>
-{{< p5-iframe sketch="/showcase/sketches/optical_illusions/stroboscopic_artifacts.js" width="500" height="500" >}}
-
-<div style="text-align: justify">
+{{< p5-iframe sketch="/showcase/sketches/optical_illusions/stroboscopic_artifacts.js" width="500" height="500">}}
 
 ## Moiré Patterns
 Moiré es una palabra francesa que significa muaré en el español y es una textura o tipo de tejido que genera una visión sobre la seda simulando un entorno acuático y ondulado debido a la manera de su fabricación, que es la superposición de dos textiles húmedos generando un patrón cuando la seda se seca.  
@@ -80,9 +143,7 @@ La explicación a detalle de esta ilusión consiste en un fenonemo relativo a la
  
 La implementación utilizando p5.js realizada para el caso anterior se muestra a continuación: 
 
-</div>
-
-{{< details title="p5-instance-div markdown" open=true >}}
+{{< details title="p5-instance-div markdown" open=false >}}
 ```js
 let x = 0;
 let colorp1, colorp2;
@@ -130,6 +191,7 @@ function draw() {
 ```
 {{< /details >}}
 <br/>
+</div>
 {{< p5-iframe sketch="/showcase/sketches/optical_illusions/moire_patterns.js" width="500" height="500" >}}
 
 <!-- ---
