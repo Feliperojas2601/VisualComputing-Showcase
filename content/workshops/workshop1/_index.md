@@ -82,7 +82,6 @@ se puede apreciar una ilusión de un objeto tridimensional, y apreciar profundid
 {{< hint warning >}}
 Note that `p5` should be the name to be used for the sketch object variable.
 {{< /hint >}}
-{{< /details >}}
 
 {{< p5-instance-div id="stereokinetic" >}}
   const frame_rate = 60;
