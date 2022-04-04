@@ -78,66 +78,7 @@ se puede apreciar una ilusión de un objeto tridimensional, y apreciar profundid
   }
 ```
 {{< /details >}}
-<!-- {{< p5-iframe sketch="/showcase/sketches/optical_illusions/stereokinetic_effect.js" width="520" height="550" >}} -->
-{{< hint warning >}}
-Note that `p5` should be the name to be used for the sketch object variable.
-{{< /hint >}}
-
-{{< p5-instance-div id="stereokinetic" >}}
-  const frame_rate = 60;
-
-  let show_crater_cb;
-  let show_crater = true;
-  let slider_label;
-
-  function setup() {
-    createCanvas(500, 500);
-    show_crater_cb = createCheckbox('show crater', show_crater);
-    show_crater_cb.changed(() => {
-      show_crater = show_crater_cb.checked();
-    });
-    frames_slider = createSlider(0.5, 5, 1, 0.25);
-    frames_slider.position(180, 515);
-    frames_slider.style('width', '80px');
-    slider_label = createSpan('speed');
-    slider_label.position(135, 513);
-    frameRate(frame_rate);
-  }
-
-  function draw() {
-    background(220);
-    
-    let difference = 40;
-    let inner_diameter = 40;
-    
-    const outer_circles = 11;
-    const start = inner_diameter + outer_circles * difference;
-    const end = inner_diameter;
-    
-    noStroke();
-    
-    let posX = 0, posY = 0;
-    let referenceX = width / 2;
-    let referenceY = height / 2;
-
-    let t, outer_coeff, inner_coef;
-
-    for (let diameter = start, index = 0; diameter >= end; diameter -= difference, index++) {
-      fill(index % 2 === 0 ? color('blue') : color('yellow'));
-      let orientation = index > 6 && show_crater ? -1 : 1;
-      outer_coeff = orientation * index * difference / 2;
-      t = frameCount * frames_slider.value() / frame_rate;
-      posX = referenceX + outer_coeff * cos(t);
-      posY = referenceY + outer_coeff * sin(t);
-      if (index == 6 && show_crater) {
-        inner_coef = diameter / 2 + difference;
-        referenceX = posX + inner_coef * cos(t);
-        referenceY = posY + inner_coef * sin(t);
-      }
-      circle(posX, posY, diameter);
-    }
-  }
-{{< /p5-instance-div >}}
+{{< p5-iframe sketch="/showcase/sketches/optical_illusions/stereokinetic_effect.js" width="520" height="550" >}} 
 
 ## Stroboscopic Artifacts
 El primer fenómeno visual consiste de una rueda o disco dividida en tres componentes que inicialmente corresponden cada una a un color primario del modelo RGB (rojo, verde y azul). La rueda gira en la dirección de las manecillas del reloj y a medida que incrementa el ángulo de rotación de esta, al igual que el retardo entre actualizaciones dado en fotogramas se pueden observar interesantes cambios en las tonalidades de la misma, además de la "dirección" del movimiento. En este fenómeno, se pueden evidenciar momentos clave, que aparecen en angulos de 60°, y más claramente 120°, donde la rueda toma valores similares al gris, debido a que cada sector alterna rápidamente entre los tres colores principales, cuya mezcla da como resultado el color evidenciado. Además, si se aumenta el ángulo 5°, parece surgir una "hélice" que gira hacia la derecha, donde cada pala está compuesta de los tres colores complementarios de los principales (magenta, cian y amarillo), por otro lado, si se disminuye en 5°, parece que la hélice gira hacia atrás.
@@ -192,48 +133,7 @@ function draw() {
 ```
 {{< /details >}}
 <br/>
-<!--{{< p5-iframe sketch="/showcase/sketches/optical_illusions/stroboscopic_artifacts.js" width="500" height="500">}} -->
-{{< p5-instance-div id="stobostic" >}}
-  let angle = 0;
-  let frames;
-  let colorp1, colorp2, colorp3;
-  let rotation_angle;
-  function setup() {
-    createCanvas(500, 500);
-    frames_slider = createSlider(5, 120, 60, 5);
-    frames_slider.position(180, 40);
-    frames_slider.style('width', '80px');
-    ellipseMode(CENTER);
-    rotation_angle = createP().position(25, 5);
-    frames = createP().position(180, 5);
-    slider = createSlider(0, 360, 0, 5);
-    slider.position(20, 40);
-    slider.style('width', '80px');
-    createP('Colors:').position(25, 55).style('font-size: 15px');
-    colorp1 = createColorPicker([0, 255, 0]).position(20, 95);
-    colorp2 = createColorPicker([0, 0, 255]).position(20, 135);
-    colorp3 = createColorPicker([255, 0, 0]).position(20, 175);
-  }
-
-
-  function draw() {
-    background(200);
-    noStroke();
-    translate(width/2, height/2);
-    rotate(angle);
-    fill(colorp1.color());
-    arc(0, 0, width/2, height/2, 0, 2*PI/3);    
-    fill(colorp2.color());
-    arc(0, 0, width/2, height/2, 2*PI/3, 4*PI/3); 
-    fill(colorp3.color());
-    arc(0, 0, width/2, height/2, 4*PI/3, 2*PI);
-
-    angle += radians(slider.value());
-    frameRate(frames_slider.value());
-    rotation_angle.html('Rotation angle: ' + slider.value());
-    frames.html('Frame rate: ' + frames_slider.value());
-  }
-{{< /p5-instance-div >}} 
+{{< p5-iframe sketch="/showcase/sketches/optical_illusions/stroboscopic_artifacts.js" width="500" height="500">}} 
 
 ## Moiré Patterns
 Moiré es una palabra francesa que significa muaré en el español y es una textura o tipo de tejido que genera una visión sobre la seda simulando un entorno acuático y ondulado debido a la manera de su fabricación, que es la superposición de dos textiles húmedos generando un patrón cuando la seda se seca.  
@@ -292,52 +192,7 @@ function draw() {
 {{< /details >}}
 <br/>
 </div>
-<!--{{< p5-iframe sketch="/showcase/sketches/optical_illusions/moire_patterns.js" width="500" height="500" >}}-->
-{{< p5-instance-div id="moire" >}}
-  let x = 0;
-  let colorp1, colorp2;
-  let increase = 0;
-
-  function setup() {
-
-      createCanvas(500, 500);
-      rectMode(CENTER);
-      colorp1 = createColorPicker([32, 162, 32]).position(20, 25);
-      colorp2 = createColorPicker([0, 0, 255]).position(75, 25);
-      slider = createSlider(0, 2, 0, 0.25);
-      slider.position(150, 25);
-      slider.style('width', '80px');
-
-  }
-
-  function draw() {
-
-      background(220);
-
-      increase = slider.value();
-
-      for (let i = 0; i < 400; i += 20) {
-
-          stroke(colorp2.color());
-          strokeWeight(4);
-          ellipse(x, 250, i - 380, i - 380);
-
-          noFill();
-          stroke(colorp1.color());
-          strokeWeight(4);
-          ellipse(250, 250, i, i);
-
-      }
-      if (x > width) {
-
-          x = 0;
-
-      } else {
-
-          x = x + increase;
-      }
-  }
-{{< /p5-instance-div >}} 
+{{< p5-iframe sketch="/showcase/sketches/optical_illusions/moire_patterns.js" width="500" height="500" >}}
 
 <!-- ---
 bookCollapseSection: true
