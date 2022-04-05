@@ -4,7 +4,7 @@ menu:
   after:
     name: workshops
     weight: 5
-title: Workshops
+title: Illusions
 ---
 
 - [Workshop 1]({{< relref "/workshops/workshop1" >}})
