@@ -8,3 +8,5 @@ title: Illusions
 ---
 
 - [Workshop 1]({{< relref "/workshops/workshop1" >}})
+- [Workshop 2]({{< relref "/workshops/workshop2" >}})
+
