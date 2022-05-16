@@ -155,7 +155,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 ```js
   const globe = [];
   const r = 200;
-  const total = 20;
+  const total = 50;
   let angleX = 0;
   let angleY = 0;
 
@@ -189,6 +189,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
       textureMode(NORMAL);
       texture(earth);
+      scale(-1,1);
 
       for (let i = 0; i < total; i++) {
           beginShape(TRIANGLE_STRIP);
@@ -214,7 +215,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 {{< p5-global-iframe id="sphereEarth" width="520" height="530" >}}
   const globe = [];
   const r = 200;
-  const total = 20;
+  const total = 50;
   let angleX = 0;
   let angleY = 0;
 
@@ -248,6 +249,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
       textureMode(NORMAL);
       texture(earth);
+      scale(-1,1);
 
       for (let i = 0; i < total; i++) {
           beginShape(TRIANGLE_STRIP);
@@ -275,7 +277,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 ```js
   const globe = [];
   const r = 200;
-  const total = 20;
+  const total = 50;
   let angleX = 0;
   let angleY = 0;
 
@@ -334,7 +336,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 {{< p5-global-iframe id="sphereEarth" width="520" height="530" >}}
   const globe = [];
   const r = 200;
-  const total = 20;
+  const total = 50;
   let angleX = 0;
   let angleY = 0;
 
@@ -347,6 +349,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       noFill();
       strokeWeight(2);
       stroke(200);
+      art = createGraphics(400, 400);
 
       for (let i = 0; i < total + 1; i++) {
           globe[i] = [];
