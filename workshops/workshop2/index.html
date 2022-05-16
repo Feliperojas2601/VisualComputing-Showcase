@@ -1,69 +1,59 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Visual phenomena and Optical Illusions #  I. Introducción #  Las ilusiones ópticas son distorsiones de los sentidos causadas por el sistema visual, caracterizadas por una percepción que parece diferir de la realidad. Estas pueden revelar cómo el cerebro humano organiza e interpreta normalmente la estimulación sensorial y permiten estudiar las limitaciones de la percepción visual. Este tipo de &ldquo;fenómenos&rdquo; son adaptaciones especialmente buenas de nuestro sistema visual a situaciones de visión estándar; estas adaptaciones al depender de nuestro cerebro pueden provocar interpretaciones inadecuadas de la escena visual y dependen de la representación interna de la realidad una vez nuestros ojos han filtrado la información."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="Workshop1"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://feliperojas2601.github.io/VisualComputing-Showcase/workshops/workshop2/"><title>Workshop1 | Showcase Template</title><link rel=manifest href=/VisualComputing-Showcase/manifest.json><link rel=icon href=/VisualComputing-Showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/VisualComputing-Showcase/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/VisualComputing-Showcase/flexsearch.min.js></script>
-<script defer src=/VisualComputing-Showcase/en.search.min.6043da0433952f775968867011d8791ce94fb7041d697d0eca193222ddbb65f0.js integrity="sha256-YEPaBDOVL3dZaIZwEdh5HOlPtwQdaX0OyhkyIt27ZfA=" crossorigin=anonymous></script>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Texture Mapping and &mldr; #  I. Introducción #  El mapeo de texturas es el método con el cual se realiza el detallado mediante color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.
+El proceso consiste en la obtención de una imagen mediante fotografía digital o escaneo y su manipulación mediante software para ser utilizada."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="Workshop2"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://feliperojas2601.github.io/VisualComputing-Showcase/workshops/workshop2/"><title>Workshop2 | Showcase Template</title><link rel=manifest href=/VisualComputing-Showcase/manifest.json><link rel=icon href=/VisualComputing-Showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/VisualComputing-Showcase/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/VisualComputing-Showcase/flexsearch.min.js></script>
+<script defer src=/VisualComputing-Showcase/en.search.min.c75469c93a5f1572907943d33850f2dddd95bd36c3f2094e3511a6976c524000.js integrity="sha256-x1RpyTpfFXKQeUPTOFDy3d2VvTbD8glONRGml2xSQAA=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://feliperojas2601.github.io/VisualComputing-Showcase/workshops/workshop2/index.xml title="Showcase Template"></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/VisualComputing-Showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/VisualComputing-Showcase/members/>Members</a></li><li><a href=/VisualComputing-Showcase/workshops/>Illusions</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/VisualComputing-Showcase/svg/menu.svg class=book-icon alt=Menu></label>
-<strong>Workshop1</strong>
-<label for=toc-control><img src=/VisualComputing-Showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#visual-phenomena-and-optical-illusions><strong>Visual phenomena and Optical Illusions</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#stereokinetic-effect><strong>Stereokinetic Effect</strong></a></li><li><a href=#stroboscopic-artifacts><strong>Stroboscopic Artifacts</strong></a></li><li><a href=#moiré-patterns><strong>Moiré Patterns</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=visual-phenomena-and-optical-illusions><strong>Visual phenomena and Optical Illusions</strong>
-<a class=anchor href=#visual-phenomena-and-optical-illusions>#</a></h1><div style=text-align:justify><h2 id=i-introducción><strong>I. Introducción</strong>
-<a class=anchor href=#i-introducci%c3%b3n>#</a></h2><p>Las ilusiones ópticas son distorsiones de los sentidos causadas por el sistema visual, caracterizadas por una percepción que parece diferir de la realidad. Estas pueden revelar cómo el cerebro humano organiza e interpreta normalmente la estimulación sensorial y permiten estudiar las limitaciones de la percepción visual. Este tipo de &ldquo;fenómenos&rdquo; son adaptaciones especialmente buenas de nuestro sistema visual a situaciones de visión estándar; estas adaptaciones al depender de nuestro cerebro pueden provocar interpretaciones inadecuadas de la escena visual y dependen de la representación interna de la realidad una vez nuestros ojos han filtrado la información. Michael Bach es un científico alemán que ha investigado ampliamente el campo de la oftalmología y la percepción visual, y su sitio &ldquo;Optical Illusions & Visual Phenomena&rdquo; contiene un amplio repertorio de ilusiones ópticas que son claramente explicadas y su explicación nos acerca a entender un poco mejor de donde viene la interpretación que se da de estos fenómenos. Bach los clasifica en fenómenos de movimiento y tiempo, iluminación y contraste, color, ilusiones geométricas y angulares, entre otros. Para este trabajo se han seleccionado tres de los fenómenos/ilusiones propuestas por Bach, las cuales se analizarán en detalle y se presentará su correspondiente implementación en JavaScript utilizando la biblioteca de p5.js</p><h2 id=ii-contextualización><strong>II. Contextualización</strong>
-<a class=anchor href=#ii-contextualizaci%c3%b3n>#</a></h2><h3 id=stereokinetic-effect><strong>Stereokinetic Effect</strong>
-<a class=anchor href=#stereokinetic-effect>#</a></h3><p>El primer informe del fenómeno estereo cinético fue publicado en 1924 por Mussati, atribuyendo su descubrimiento a su maestro, Vittorio Benussi. Establecía que todas las percepciones de profundidad se basan en información de movimiento como fenómeno estereo cinético, y que entre los eventos que consideraba ejemplos de este efecto, estaban:</p><ul><li>Percibir la profundidad desde el paralaje de movimiento. Se refiere al hecho de que los objetos que se mueven a velocidad constante a lo largo del fotograma parecerán moverse en mayor proporción si se encuentran más cerca al observador.</li><li>El efecto cinético de profundidad, que se refiere a la percepción tridimensional al observar las proyecciones de objetos rotando.</li><li>Patrones bidimensionales que al rotar sobre el plano de una imagen evocan impresiones de profundidad.</li></ul><p>El patrón más comúnmente estudiado del efecto estéreo cinético, referido como SKE cone, consiste en patrones circulares anidados que rotan sobre una plataforma circular. Estos círculos, al rotar alrededor de algún eje distinto de la línea de visión de quien los observa, permiten extraer la configuración tridimensional del patrón, debido a varias transformaciones ópticas que se producen. Al hacer rotar varios círculos externos sobre el eje de la plataforma circular, y círculos internos sobre un círculo interno intermedio, en sentido contrario, se puede apreciar una ilusión de un objeto tridimensional cónico, y apreciar profundidad mediante los círculos internos [Figura 2]. Si la rotación se mantiene en un solo sentido para todos los círculos internos, se tiene la impresión de un cono que apunta hacia el observador, o visto desde otra perspectiva, el interior de un cono que apunta hacia el sentido opuesto al observador [Figura 1].</p><div align=center><p><img src=https://lh6.googleusercontent.com/Hy-5aOu7gIlbEsempub9R27O3rXD4fmSomF69HcqQUNOTOd1CTpF-6D86B6fDrhFwj1sm-agWxubsBqcbJ-XmvRuB0tIY63r_HKNqqoeQUBhVdzfPHHAMd88m3yZkGpbW4R2ozla alt="StereoKinetic Effect"></p><p><em>Figura 1. Efecto estereo cinético de cono, donde todos los círculos internos rotan respecto a un círculo externo, dando la impresión de un cono apuntando hacia o en sentido contrario del observador.</em></p></div><div align=center><p><img src=https://lh4.googleusercontent.com/4RYipPoW4EIMbmJH7io8d_ZEfpwtUmkBPENdlsCaS3tVWhwG23MWLolWuoe_wvl8tmbxMmWMqTVLmKO-_1xfNuaxO5BjI5-X6-73uV-by9LZhQen-3NtSHFKNtAL0mpPyetjfrJ5 alt="StereoKinetic Effect 2"></p><p><em>Figura 2. Efecto estereo cinético de cono, donde algunos los círculos internos rotan respecto a otro círculo interno, pudiendo obtener la percepción de profundidad de un cono abierto.</em></p></div><p>Cuando el movimiento a lo largo de los contornos de los círculos no es detectado, el patrón alcanza lo que Musatti llamó estabilidad de orientación, por lo parece que los contornos se mueven relativos a otros, lo cual a su vez evoca la percepción de una forma tridimensional, inclinada en profundidad en un ángulo consistente con su excentricidad y altura aparente y moviéndose alrededor de la línea de visión (el eje z) con componentes oscilatorios iguales en los ejes x e y.</p><h3 id=stroboscopic-artifacts><strong>Stroboscopic Artifacts</strong>
-<a class=anchor href=#stroboscopic-artifacts>#</a></h3><p>El segundo fenómeno visual consiste de una rueda o disco dividida en tres componentes que inicialmente corresponden cada una a un color primario del modelo RGB (rojo, verde y azul). La rueda gira en la dirección de las manecillas del reloj y a medida que incrementa el ángulo de rotación de ésta, al igual que el retardo entre actualizaciones dado en fotogramas se pueden observar interesantes cambios en las tonalidades de la misma, además de la &ldquo;dirección&rdquo; del movimiento. En este fenómeno, se pueden evidenciar momentos clave, que aparecen en ángulos de 60°, y más claramente 120°, donde la rueda toma valores similares al gris, debido a que cada sector alterna rápidamente entre los tres colores principales, cuya mezcla da como resultado el color evidenciado. Además, si se aumenta el ángulo 5°, parece surgir una &ldquo;hélice&rdquo; que gira hacia la derecha, donde cada pala está compuesta de los tres colores complementarios de los principales (magenta, cian y amarillo), por otro lado, si se disminuye en 5°, parece que la hélice gira hacia atrás.<br>Bach explica tal fenómeno desde la perspectiva del movimiento en las pantallas de ordenador, que cuando se trata de un movimiento rápido sufren del efecto estroboscópico o también denominado aliasing temporal. El aliasing se puede explicar bajo el escenario de que cuando se ve una imagen digital, un dispositivo de visualización, los ojos y el cerebro realizan una reconstrucción; si los datos de la imagen se procesan de alguna manera durante el muestreo o la reconstrucción, la imagen reconstruida diferirá de la imagen original, y se verá un alias que suele superponer al original (este efecto se evidencia comúnmente en el muestreo de señales). Por su parte, el efecto estroboscópico se produce cuando el movimiento rotativo continuo u otro movimiento cíclico se representa mediante una serie de muestras cortas o instantáneas (en contraposición a una vista continua) a una frecuencia de muestreo cercana al periodo del movimiento. Esta es la causa del &ldquo;efecto rueda de carreta&rdquo;, que Bach abarca también en su repertorio, llamado así porque en los videos, las ruedas (como las de los carros de caballos) a veces parecen girar hacia atrás. Para que se produzca tal efecto, es necesario que la pantalla se presente de forma discontinua: puede que no sea visible, pero la rueda (o lo que se presente en la pantalla) se mueve a &ldquo;tirones&rdquo;; si estas &ldquo;sacudidas&rdquo; se producen con suficiente rapidez (por ejemplo, 20 veces por segundo, o similar al caso de nuestro ejemplo), nuestro sistema visual interpola las posiciones que faltan. Esta interpolación se basa en el principio del &ldquo;vecino más cercano&rdquo; y si el desplazamiento del radio de la rueda de un fotograma a otro es tan grande que está más cerca del (antiguo) radio siguiente que del (antiguo) original, nuestro sistema visual asume la dirección de movimiento opuesta.<br>Bach también menciona la importancia de la frecuencia de fotogramas en el movimiento. El disco no gira suavemente, sino que se presenta en cuadros fijos que se suceden rápidamente, cada uno con un ángulo de rotación diferente, lo que produce la percepción de un movimiento suave, también llamado &ldquo;Fenómeno Phi&rdquo; de Wertheimer. Sin embargo, este movimiento depende en gran medida de la tasa de fotogramas, que para el caso predeterminado es de 60 cuadros mostrados por segundo y también entra en juego otro aspecto: la tasa de fotogramas del monitor o la pantalla. Según esto, entonces, lo que se puede apreciar exactamente depende de la interacción de las dos tasas de fotogramas y del incremento del ángulo, donde en variados casos según la configuración se puede evidenciar la &ldquo;mezcla&rdquo; de los colores, por el solapamiento de las secciones, además de los efectos ya mencionados.</p><h3 id=moiré-patterns><strong>Moiré Patterns</strong>
-<a class=anchor href=#moir%c3%a9-patterns>#</a></h3><p>Moiré es una palabra francesa que significa muaré en el español y es una textura o tipo de tejido que genera una visión sobre la seda simulando un entorno acuático y ondulado debido a la manera de su fabricación, que es la superposición de dos textiles húmedos generando un patrón cuando la seda se seca.<br>Esta ilusión optica conocida como Moiré patterns o patrones muaré hace referencia a la superposición de dos patrones similares que están compuestos por rayas opacas ó de color junto con un espacio transaparente. Al encontrarse diferencias en los patrones, la colocación de los mismos, movimientos de rotación o desplazamiento y otros aspectos como aceleración o formatura, es posible generar una especie de bandas oscuras móviles conocidas como moirés. Este efecto no es simplemente aludido en el arte y la animación, sino que, tiene aplicaciones científicas en los campos de matemática y física en donde surgen cálculos con respecto a las formas, rotaciones, aceleraciones, desplazamientos, interferencia de ondas, entre otros más.</p><div align=center><p><img src=https://lh5.googleusercontent.com/-0ouLdip4LKgPQi9TnM64yQOUDWa1Y3AOJentysAThbBbcsZMMvdun2PPqhwxNkgihuruP4fF2URSGLVJb24DUJWNQrU2m4akpuSS2JvHa4KO0lS72GyLBO0vk0dZRe4PYXMY7Hx alt="Moiré Patterns"></p><p><em>Figura 4. Moirés generados por la rotación de uno de dos patrones de líneas paralelas negras. Imagen extraída de: <a href=https://en.wikipedia.org/wiki/Moir%C3%A9_pattern>Wikipedia</a></em></p></div><p>La explicación a detalle de esta ilusión consiste en un fenómeno relativo a la luz y la superposición, pues la luz impacta a ambos patrones que permiten que esta pueda pasar o quedar bloqueada según la forma y/o el color o transparencia en el que se encuentre impactando. Esto genera una multiplicación en las razones de transmitancia de luz y dos frecuencias que a la vista parecen distintas.</p><div align=center><p><img src=https://lh5.googleusercontent.com/dEFqap-1r8k_cHwUOggy47i_t81QVpSNVq6RnpN_F42Pd47DngSpjFJMyD-zVQn_pBj32nqpH3fwmM0bEqs6M8th9WpuDJ-zfhxTO31XUKELS0T0FKFXvy7snSztB5HjQPH_XdSN alt="Moiré Patterns 2"></p><p><em>Figura 5. Moirés generados el movimiento horizontal de un patron de círculos concéntricos.</em></p></div><h2 id=iii-resultados><strong>III. Resultados</strong>
-<a class=anchor href=#iii-resultados>#</a></h2><p>La implementación utilizando p5.js realizada para los casos anteriores se muestra a continuación:</p><p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>frame_rate</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>60</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>show_crater_cb</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>show_crater</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>slider_label</span>;
+<strong>Workshop2</strong>
+<label for=toc-control><img src=/VisualComputing-Showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#texture-mapping-and-><strong>Texture Mapping and &mldr;</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#texture-mapping-con-imagen><strong>Texture Mapping con Imagen</strong></a></li><li><a href=#texture-mapping-con-función><strong>Texture Mapping con Función</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=texture-mapping-and-><strong>Texture Mapping and &mldr;</strong>
+<a class=anchor href=#texture-mapping-and->#</a></h1><div style=text-align:justify><h2 id=i-introducción><strong>I. Introducción</strong>
+<a class=anchor href=#i-introducci%c3%b3n>#</a></h2><p>El mapeo de texturas es el método con el cual se realiza el detallado mediante color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.<br>El proceso consiste en la obtención de una imagen mediante fotografía digital o escaneo y su manipulación mediante software para ser utilizada. Posteriormente, la aplicación es el mapeo de vértices del polígono a una coordenada de textura.
+El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando los tres vertices del tríangulo en la imagen, con coordenadas normalizadas en la imagen y calculando los puntos interiores utilizando coordenadas báricentricas, se presentará su correspondiente implementación en JavaScript utilizando la biblioteca de p5.js y WEBGL.</p><h2 id=ii-contextualización><strong>II. Contextualización</strong>
+<a class=anchor href=#ii-contextualizaci%c3%b3n>#</a></h2><h3 id=texture-mapping-con-imagen><strong>Texture Mapping con Imagen</strong>
+<a class=anchor href=#texture-mapping-con-imagen>#</a></h3><p>El primer mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a bajo nivel mediante el uso de las funciones <code>beginShape()</code> y <code>endShape()</code>.</p><div align=center><p><img src=https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ alt=Tierra></p><p><em>Figura 1. Plano 2D de la tierra.</em></p></div><p>Para realizar la esfera, utilizamos los conceptos de mapeo entre longitud/latitud en un plano 2D a la esfera utilizando ángulos.<br>Los valores de longitud y latitud estarán:</p><ul><li>$Long \in [0^o, 360^o].$</li><li>$Lat \in [0^o, 180^o].$</li></ul><p>Buscamos mapear los valores de $(r,lat,long) \arrow (x,y,z)$.</p><ul><li>$x = r sin(lat) cos(long)$</li><li>$y = r sin(lat) sin(long)$</li><li>$z = r cos(lat)$</li></ul><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>25</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>show_crater_cb</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createCheckbox</span>(<span style=color:#e6db74>&#39;show crater&#39;</span>, <span style=color:#a6e22e>show_crater</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>show_crater_cb</span>.<span style=color:#a6e22e>changed</span>(() =&gt; {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>show_crater</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>show_crater_cb</span>.<span style=color:#a6e22e>checked</span>();
-</span></span><span style=display:flex><span>    });
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>frames_slider</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSlider</span>(<span style=color:#ae81ff>0.5</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0.25</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>frames_slider</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>180</span>, <span style=color:#ae81ff>515</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>frames_slider</span>.<span style=color:#a6e22e>style</span>(<span style=color:#e6db74>&#39;width&#39;</span>, <span style=color:#e6db74>&#39;80px&#39;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider_label</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSpan</span>(<span style=color:#e6db74>&#39;speed&#39;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider_label</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>135</span>, <span style=color:#ae81ff>513</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>frameRate</span>(<span style=color:#a6e22e>frame_rate</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>noFill</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>] <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lat</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>i</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>PI</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lon</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>j</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>TWO_PI</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lon</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>y</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lon</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>z</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lat</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVector</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>220</span>);
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>difference</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>40</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>inner_diameter</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>40</span>;
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>outer_circles</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>11</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>start</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>inner_diameter</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>outer_circles</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>difference</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>end</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>inner_diameter</span>;
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>noStroke</span>();
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>posX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>posY</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>referenceX</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>referenceY</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>51</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angleX</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angleY</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>outer_coeff</span>, <span style=color:#a6e22e>inner_coef</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>diameter</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>start</span>, <span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>diameter</span> <span style=color:#f92672>&gt;=</span> <span style=color:#a6e22e>end</span>; <span style=color:#a6e22e>diameter</span> <span style=color:#f92672>-=</span> <span style=color:#a6e22e>difference</span>, <span style=color:#a6e22e>index</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>fill</span>(<span style=color:#a6e22e>index</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>?</span> <span style=color:#a6e22e>color</span>(<span style=color:#e6db74>&#39;blue&#39;</span>) <span style=color:#f92672>:</span> <span style=color:#a6e22e>color</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>));
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>orientation</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>index</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>6</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>show_crater</span> <span style=color:#f92672>?</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span> <span style=color:#f92672>:</span> <span style=color:#ae81ff>1</span>;
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>outer_coeff</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>orientation</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>index</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>difference</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>;
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>frameCount</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>frames_slider</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>/</span> <span style=color:#a6e22e>frame_rate</span>;
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>posX</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>referenceX</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>outer_coeff</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>t</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>posY</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>referenceY</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>outer_coeff</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>t</span>);
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>index</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>6</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>show_crater</span>) {
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>inner_coef</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>diameter</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>difference</span>;
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>referenceX</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>posX</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>inner_coef</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>t</span>);
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>referenceY</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>posY</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>inner_coef</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>t</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>beginShape</span>(<span style=color:#a6e22e>TRIANGLE_STRIP</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>];
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>][<span style=color:#a6e22e>j</span>];
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>z</span>);
 </span></span><span style=display:flex><span>      }
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>circle</span>(<span style=color:#a6e22e>posX</span>, <span style=color:#a6e22e>posY</span>, <span style=color:#a6e22e>diameter</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>endShape</span>();
 </span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.005</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.006</span>;
 </span></span><span style=display:flex><span>  }
-</span></span></code></pre></div></div></details><br></p><iframe id=stereo style=width:520px;height:550px srcdoc="
+</span></span></code></pre></div></div></details><br><div align=center><iframe id=sphere style=width:520px;height:530px srcdoc="
         <!DOCTYPE html>
         <html>
           <head>
@@ -76,105 +66,110 @@
             
             <script>
               
-  const frame_rate = 60;
-
-  let show_crater_cb;
-  let show_crater = true;
-  let slider_label;
+  const globe = [];
+  const r = 200;
+  const total = 25;
+  let angleX = 0;
+  let angleY = 0;
 
   function setup() {
-    createCanvas(500, 500);
-    show_crater_cb = createCheckbox('show crater', show_crater);
-    show_crater_cb.changed(() => {
-      show_crater = show_crater_cb.checked();
-    });
-    frames_slider = createSlider(0.5, 5, 1, 0.25);
-    frames_slider.position(180, 515);
-    frames_slider.style('width', '80px');
-    slider_label = createSpan('speed');
-    slider_label.position(135, 513);
-    frameRate(frame_rate);
-  }
+    createCanvas(500, 500, WEBGL);
+    noFill();
+    strokeWeight(2);
+    stroke(200);
 
-  function draw() {
-    background(220);
-    
-    let difference = 40;
-    let inner_diameter = 40;
-    
-    const outer_circles = 11;
-    const start = inner_diameter + outer_circles * difference;
-    const end = inner_diameter;
-    
-    noStroke();
-    
-    let posX = 0, posY = 0;
-    let referenceX = width / 2;
-    let referenceY = height / 2;
-
-    let t, outer_coeff, inner_coef;
-
-    for (let diameter = start, index = 0; diameter >= end; diameter -= difference, index++) {
-      fill(index % 2 === 0 ? color('blue') : color('yellow'));
-      let orientation = index > 6 && show_crater ? -1 : 1;
-      outer_coeff = orientation * index * difference / 2;
-      t = frameCount * frames_slider.value() / frame_rate;
-      posX = referenceX + outer_coeff * cos(t);
-      posY = referenceY + outer_coeff * sin(t);
-      if (index == 6 && show_crater) {
-        inner_coef = diameter / 2 + difference;
-        referenceX = posX + inner_coef * cos(t);
-        referenceY = posY + inner_coef * sin(t);
+    for (let i = 0; i < total + 1; i++) {
+      globe[i] = [];
+      const lat = map(i, 0, total, 0, PI);
+      for (let j = 0; j < total + 1; j++) {
+        const lon = map(j, 0, total, 0, TWO_PI);
+        const x = r * sin(lat) * cos(lon);
+        const y = r * sin(lat) * sin(lon);
+        const z = r * cos(lat);
+        globe[i][j] = createVector(x, y, z);
       }
-      circle(posX, posY, diameter);
     }
   }
 
+  function draw() {
+    background(51);
+    rotateX(angleX);
+    rotateY(angleY);
+
+    for (let i = 0; i < total; i++) {
+      beginShape(TRIANGLE_STRIP);
+      for (let j = 0; j < total + 1; j++) {
+        const v1 = globe[i][j];
+        vertex(v1.x, v1.y, v1.z);
+        const v2 = globe[i + 1][j];
+        vertex(v2.x, v2.y, v2.z);
+      }
+      endShape();
+    }
+
+    angleX += 0.005;
+    angleY += 0.006;
+  }
+
             </script>
           </head>
           <body>
           </body>
         </html>
-      "></iframe><p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angle</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>frames</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>colorp1</span>, <span style=color:#a6e22e>colorp2</span>, <span style=color:#a6e22e>colorp3</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>rotation_angle</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames_slider</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSlider</span>(<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>120</span>, <span style=color:#ae81ff>60</span>, <span style=color:#ae81ff>5</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames_slider</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>180</span>, <span style=color:#ae81ff>40</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames_slider</span>.<span style=color:#a6e22e>style</span>(<span style=color:#e6db74>&#39;width&#39;</span>, <span style=color:#e6db74>&#39;80px&#39;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>ellipseMode</span>(<span style=color:#a6e22e>CENTER</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotation_angle</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createP</span>().<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>25</span>, <span style=color:#ae81ff>5</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createP</span>().<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>180</span>, <span style=color:#ae81ff>5</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>slider</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSlider</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>360</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>5</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>40</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>style</span>(<span style=color:#e6db74>&#39;width&#39;</span>, <span style=color:#e6db74>&#39;80px&#39;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>createP</span>(<span style=color:#e6db74>&#39;Colors:&#39;</span>).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>25</span>, <span style=color:#ae81ff>55</span>).<span style=color:#a6e22e>style</span>(<span style=color:#e6db74>&#39;font-size: 15px&#39;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>colorp1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>0</span>]).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>95</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>colorp2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>]).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>135</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>colorp3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>([<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>]).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>175</span>);
-</span></span><span style=display:flex><span>}
+      "></iframe><p><em>Figura 2. Esfera construida a bajo nivel.</em></p></div><p>Por último, es necesario establecer el modo de textura normalizado y dividir nuestros valores de longitud (coordenada x) y latitud (coordenada y) entre el número total de vértices para darles un valor entre 0 y 1.</p><h3 id=texture-mapping-con-función><strong>Texture Mapping con Función</strong>
+<a class=anchor href=#texture-mapping-con-funci%c3%b3n>#</a></h3><p>El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una función que genera secciones rojas sobre un fondo anarajando simulando el comportamiento del sol, realizado a bajo nivel mediante el uso de las funciones <code>beginShape()</code> y <code>endShape()</code>.</p><h2 id=iii-resultados><strong>III. Resultados</strong>
+<a class=anchor href=#iii-resultados>#</a></h2><p>La implementación utilizando p5.js realizada para los casos anteriores se muestra a continuación:</p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>20</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>earth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ&#39;</span>);
+</span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>200</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>noStroke</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>translate</span>(<span style=color:#a6e22e>width</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>height</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotate</span>(<span style=color:#a6e22e>angle</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>fill</span>(<span style=color:#a6e22e>colorp1</span>.<span style=color:#a6e22e>color</span>());
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>width</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>height</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#a6e22e>PI</span><span style=color:#f92672>/</span><span style=color:#ae81ff>3</span>);    
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>fill</span>(<span style=color:#a6e22e>colorp2</span>.<span style=color:#a6e22e>color</span>());
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>width</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>height</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#a6e22e>PI</span><span style=color:#f92672>/</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#a6e22e>PI</span><span style=color:#f92672>/</span><span style=color:#ae81ff>3</span>); 
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>fill</span>(<span style=color:#a6e22e>colorp3</span>.<span style=color:#a6e22e>color</span>());
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>arc</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>width</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>height</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>4</span><span style=color:#f92672>*</span><span style=color:#a6e22e>PI</span><span style=color:#f92672>/</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#a6e22e>PI</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>noFill</span>();
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>angle</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>radians</span>(<span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>value</span>());
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frameRate</span>(<span style=color:#a6e22e>frames_slider</span>.<span style=color:#a6e22e>value</span>());
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rotation_angle</span>.<span style=color:#a6e22e>html</span>(<span style=color:#e6db74>&#39;Rotation angle: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>value</span>());
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>frames</span>.<span style=color:#a6e22e>html</span>(<span style=color:#e6db74>&#39;Frame rate: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>frames_slider</span>.<span style=color:#a6e22e>value</span>());
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div></div></details><br></p><iframe id=stobostopic style=width:500px;height:500px srcdoc="
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>] <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lat</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>i</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>PI</span>);
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lon</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>j</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>TWO_PI</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lon</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>y</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lon</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>z</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lat</span>);
+</span></span><span style=display:flex><span>              <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVector</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>51</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angleX</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angleY</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>earth</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>beginShape</span>(<span style=color:#a6e22e>TRIANGLE_STRIP</span>);
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>];
+</span></span><span style=display:flex><span>              <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>z</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>, <span style=color:#a6e22e>i</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>][<span style=color:#a6e22e>j</span>];
+</span></span><span style=display:flex><span>              <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>z</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>, (<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>);
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>endShape</span>();
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.005</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.006</span>;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div></div></details><br><div align=center><iframe id=sphereEarth style=width:520px;height:530px srcdoc="
         <!DOCTYPE html>
         <html>
           <head>
@@ -187,44 +182,56 @@
             
             <script>
               
-  let angle = 0;
-  let frames;
-  let colorp1, colorp2, colorp3;
-  let rotation_angle;
-  function setup() {
-    createCanvas(500, 500);
-    frames_slider = createSlider(5, 120, 60, 5);
-    frames_slider.position(180, 40);
-    frames_slider.style('width', '80px');
-    ellipseMode(CENTER);
-    rotation_angle = createP().position(25, 5);
-    frames = createP().position(180, 5);
-    slider = createSlider(0, 360, 0, 5);
-    slider.position(20, 40);
-    slider.style('width', '80px');
-    createP('Colors:').position(25, 55).style('font-size: 15px');
-    colorp1 = createColorPicker([0, 255, 0]).position(20, 95);
-    colorp2 = createColorPicker([0, 0, 255]).position(20, 135);
-    colorp3 = createColorPicker([255, 0, 0]).position(20, 175);
+  const globe = [];
+  const r = 200;
+  const total = 20;
+  let angleX = 0;
+  let angleY = 0;
+
+  function preload() {
+      earth = loadImage('https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ');
   }
 
+  function setup() {
+      createCanvas(500, 500, WEBGL);
+      noFill();
+      strokeWeight(2);
+      stroke(200);
+
+      for (let i = 0; i < total + 1; i++) {
+          globe[i] = [];
+          const lat = map(i, 0, total, 0, PI);
+          for (let j = 0; j < total + 1; j++) {
+              const lon = map(j, 0, total, 0, TWO_PI);
+              const x = r * sin(lat) * cos(lon);
+              const y = r * sin(lat) * sin(lon);
+              const z = r * cos(lat);
+              globe[i][j] = createVector(x, y, z);
+          }
+      }
+  }
 
   function draw() {
-    background(200);
-    noStroke();
-    translate(width/2, height/2);
-    rotate(angle);
-    fill(colorp1.color());
-    arc(0, 0, width/2, height/2, 0, 2*PI/3);    
-    fill(colorp2.color());
-    arc(0, 0, width/2, height/2, 2*PI/3, 4*PI/3); 
-    fill(colorp3.color());
-    arc(0, 0, width/2, height/2, 4*PI/3, 2*PI);
+      background(51);
+      rotateX(angleX);
+      rotateY(angleY);
 
-    angle += radians(slider.value());
-    frameRate(frames_slider.value());
-    rotation_angle.html('Rotation angle: ' + slider.value());
-    frames.html('Frame rate: ' + frames_slider.value());
+      textureMode(NORMAL);
+      texture(earth);
+
+      for (let i = 0; i < total; i++) {
+          beginShape(TRIANGLE_STRIP);
+          for (let j = 0; j < total + 1; j++) {
+              const v1 = globe[i][j];
+              vertex(v1.x, v1.y, v1.z, j / total, i / total);
+              const v2 = globe[i + 1][j];
+              vertex(v2.x, v2.y, v2.z, j / total, (i + 1) / total);
+          }
+          endShape();
+      }
+
+      angleX += 0.005;
+      angleY += 0.006;
   }
 
             </script>
@@ -232,50 +239,58 @@
           <body>
           </body>
         </html>
-      "></iframe><p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>colorp1</span>, <span style=color:#a6e22e>colorp2</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>increase</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+      "></iframe><p><em>Figura 3. Esfera mapaeada con la imagen de la tierra.</em></p></div><br><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>20</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>earth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w&#39;</span>);
+</span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>rectMode</span>(<span style=color:#a6e22e>CENTER</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorp1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>([<span style=color:#ae81ff>32</span>, <span style=color:#ae81ff>162</span>, <span style=color:#ae81ff>32</span>]).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>25</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorp2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>]).<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>75</span>, <span style=color:#ae81ff>25</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSlider</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0.25</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>25</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>style</span>(<span style=color:#e6db74>&#39;width&#39;</span>, <span style=color:#e6db74>&#39;80px&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>noFill</span>();
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>] <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lat</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>i</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>PI</span>);
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lon</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>j</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>TWO_PI</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lon</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>y</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lon</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>z</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lat</span>);
+</span></span><span style=display:flex><span>              <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVector</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>51</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angleX</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angleY</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>220</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>earth</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>increase</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>value</span>();
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>beginShape</span>(<span style=color:#a6e22e>TRIANGLE_STRIP</span>);
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>];
+</span></span><span style=display:flex><span>              <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>z</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>, <span style=color:#a6e22e>i</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>][<span style=color:#a6e22e>j</span>];
+</span></span><span style=display:flex><span>              <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>z</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>, (<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>);
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>endShape</span>();
+</span></span><span style=display:flex><span>      }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>400</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>20</span>) {
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>stroke</span>(<span style=color:#a6e22e>colorp2</span>.<span style=color:#a6e22e>color</span>());
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>4</span>);
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>ellipse</span>(<span style=color:#a6e22e>x</span>, <span style=color:#ae81ff>250</span>, <span style=color:#a6e22e>i</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>380</span>, <span style=color:#a6e22e>i</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>380</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>noFill</span>();
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>stroke</span>(<span style=color:#a6e22e>colorp1</span>.<span style=color:#a6e22e>color</span>());
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>4</span>);
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>ellipse</span>(<span style=color:#ae81ff>250</span>, <span style=color:#ae81ff>250</span>, <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>i</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>x</span> <span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>width</span>) {
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>else</span> {
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>increase</span>;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div></div></details><br></p></div><iframe id=moire style=width:500px;height:500px srcdoc="
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.005</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.006</span>;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div></div></details><br><div align=center><iframe id=sphereEarth style=width:520px;height:530px srcdoc="
         <!DOCTYPE html>
         <html>
           <head>
@@ -288,48 +303,56 @@
             
             <script>
               
-  let x = 0;
-  let colorp1, colorp2;
-  let increase = 0;
+  const globe = [];
+  const r = 200;
+  const total = 20;
+  let angleX = 0;
+  let angleY = 0;
+
+  function preload() {
+      earth = loadImage('https://lh5.googleusercontent.com/M4WyVy1cQt8XdT2QLejuw1yCcS555TcsjcduaG1OG2XT__f-G35dEIUvv5TpXE5sL6OjZsdbVPMeum5n1iU-QawtQyhAoHmsUKPOO62E0KsVtvv_pBlsR2qFePFaKrdKcc_yftM6SKYtQ55aUQ');
+  }
 
   function setup() {
+      createCanvas(500, 500, WEBGL);
+      noFill();
+      strokeWeight(2);
+      stroke(200);
 
-      createCanvas(500, 500);
-      rectMode(CENTER);
-      colorp1 = createColorPicker([32, 162, 32]).position(20, 25);
-      colorp2 = createColorPicker([0, 0, 255]).position(75, 25);
-      slider = createSlider(0, 2, 0, 0.25);
-      slider.position(150, 25);
-      slider.style('width', '80px');
-
+      for (let i = 0; i < total + 1; i++) {
+          globe[i] = [];
+          const lat = map(i, 0, total, 0, PI);
+          for (let j = 0; j < total + 1; j++) {
+              const lon = map(j, 0, total, 0, TWO_PI);
+              const x = r * sin(lat) * cos(lon);
+              const y = r * sin(lat) * sin(lon);
+              const z = r * cos(lat);
+              globe[i][j] = createVector(x, y, z);
+          }
+      }
   }
 
   function draw() {
+      background(51);
+      rotateX(angleX);
+      rotateY(angleY);
 
-      background(220);
+      textureMode(NORMAL);
+      texture(earth);
 
-      increase = slider.value();
-
-      for (let i = 0; i < 400; i += 20) {
-
-          stroke(colorp2.color());
-          strokeWeight(4);
-          ellipse(x, 250, i - 380, i - 380);
-
-          noFill();
-          stroke(colorp1.color());
-          strokeWeight(4);
-          ellipse(250, 250, i, i);
-
+      for (let i = 0; i < total; i++) {
+          beginShape(TRIANGLE_STRIP);
+          for (let j = 0; j < total + 1; j++) {
+              const v1 = globe[i][j];
+              vertex(v1.x, v1.y, v1.z, j / total, i / total);
+              const v2 = globe[i + 1][j];
+              vertex(v2.x, v2.y, v2.z, j / total, (i + 1) / total);
+          }
+          endShape();
       }
-      if (x > width) {
 
-          x = 0;
-
-      } else {
-
-          x = x + increase;
-      }
+      angleX += 0.005;
+      angleY += 0.006;
   }
 
             </script>
@@ -337,7 +360,7 @@
           <body>
           </body>
         </html>
-      "></iframe><h2 id=iv-conclusiones><strong>IV. Conclusiones</strong>
-<a class=anchor href=#iv-conclusiones>#</a></h2><p>Para concluir, podemos resaltar en nuestras investigaciones que el campo de ilusiones ópticas es sumamente extenso y rico en información. Los límites en la generación de ilusiones son inexistentes y este informe presenta solo 3 tipos de ilusiones que pueden ser replicadas y visualizadas en una infinidad de experimentos distintos.</p><p>Como trabajo futuro podemos resaltar aplicaciones interesantes de las anteriores ilusiones ópticas, como la impresión de imágenes con color, procesamiento y medición de deformaciones en imágenes y visualización de imágenes en pantallas y dispositivos electrónicos.</p><h2 id=iv-referencias><strong>IV. Referencias</strong>
-<a class=anchor href=#iv-referencias>#</a></h2><ul><li>Bach, M. (2022). 148 Visual Phenomena & Optical Illusions. <a href=https://michaelbach.de/ot/index.html>Michael Bach</a></li><li>Bach & Poloschek (2006) Optical Illusions Primer. <a href=https://michaelbach.de/ot/-misc/BachPolo2006ACNR%20illusions.pdf>Michael Bach</a></li><li>Proffitt DR, Rock I, Hecht H, Schubert J. Stereokinetic effect and its relation to the kinetic depth effect. J Exp Psychol Hum Percept Perform. 1992 Feb;18(1):3-21. doi: 10.1037//0096-1523.18.1.3. PMID: 1532192.</li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/50719fbf92ef110935492779cc90303a47d55135 title="Last modified by FelipeRojas | May 15, 2022" target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 15, 2022</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#visual-phenomena-and-optical-illusions><strong>Visual phenomena and Optical Illusions</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#stereokinetic-effect><strong>Stereokinetic Effect</strong></a></li><li><a href=#stroboscopic-artifacts><strong>Stroboscopic Artifacts</strong></a></li><li><a href=#moiré-patterns><strong>Moiré Patterns</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></div></aside></main></body></html>
+      "></iframe><p><em>Figura 4. Esfera mapaeada con la función del sol.</em></p></div><h2 id=iv-conclusiones><strong>IV. Conclusiones</strong>
+<a class=anchor href=#iv-conclusiones>#</a></h2><p>Para concluir, podemos resaltar en nuestras investigaciones que el campo de mapeo de texturas ha sido apropiado para investigaciones y desarrollos más complejos, para entender este proceso es necesario entender las bases y el bajo nivel de los gráficos, ádemas de conceptios matemáticos claves como sistemas de coordenadas y otros involucrados en rasterización. Como trabajo futuro se puede proponer el mapeo de texturas a súper geometrías y el desarrollo de estas a nivel matemático.</p><h2 id=iv-referencias><strong>IV. Referencias</strong>
+<a class=anchor href=#iv-referencias>#</a></h2><ul><li>Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. <a href=https://en.wikipedia.org/wiki/Texture_mapping>https://en.wikipedia.org/wiki/Texture_mapping</a>. <a href=https://en.wikipedia.org/wiki/Texture_mapping>Wikipedia</a></li><li>Wikipedia contributors. (2022b, mayo 16). Spherical coordinate system. Wikipedia. <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>https://en.wikipedia.org/wiki/Spherical_coordinate_system</a> <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>Wikipedia</a></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/f23f73b7169dde1aa45c9758221d73397c6fa4e7 title="Last modified by FelipeRojas | May 16, 2022" target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>May 16, 2022</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#texture-mapping-and-><strong>Texture Mapping and &mldr;</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#texture-mapping-con-imagen><strong>Texture Mapping con Imagen</strong></a></li><li><a href=#texture-mapping-con-función><strong>Texture Mapping con Función</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></div></aside></main></body></html>
