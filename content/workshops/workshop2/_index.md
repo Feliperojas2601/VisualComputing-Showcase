@@ -9,14 +9,16 @@ title: Workshop2
 
 ## **I. Introducción** 
 
-El mapeo de texturas es el método con el cual se realiza el detallado mediante color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.  
+El mapeo de texturas es el método con el cual se realiza el detallado de color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.  
 El proceso consiste en la obtención de una imagen mediante fotografía digital o escaneo y su manipulación mediante software para ser utilizada. Posteriormente, la aplicación es el mapeo de vértices del polígono a una coordenada de textura. 
-El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando los tres vertices del tríangulo en la imagen, con coordenadas normalizadas en la imagen y calculando los puntos interiores utilizando coordenadas báricentricas, se presentará su correspondiente implementación en JavaScript utilizando la biblioteca de p5.js y WEBGL.
+El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando los tres vertices del tríangulo en la imagen, con coordenadas normalizadas en la imagen y calculando los puntos interiores utilizando coordenadas báricentricas, se presentará su correspondiente implementación bajo nivel junto con mapeos de medio y alto nivel en JavaScript utilizando la biblioteca de p5.js y WEBGL.
 
 ## **II. Contextualización**  
 
-### **Texture Mapping con Imagen**
-El primer mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a bajo nivel mediante el uso de las funciones ```beginShape()``` y ```endShape()```.  
+### **Mapeo de Alto Nivel**
+El primer mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen a alto nivel mediante el uso de las funciones ```texture()``` y ```sphere()```. 
+### **Mapeo de Medio Nivel**
+El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a medio nivel mediante el uso de las funciones ```texture()```, ```beginShape()``` y ```endShape()```.  
 
 <div align="center"> 
 
@@ -142,10 +144,8 @@ Buscamos mapear los valores de $(r,lat,long) \arrow (x,y,z)$.
 
 Por último, es necesario establecer el modo de textura normalizado y dividir nuestros valores de longitud (coordenada x) y latitud (coordenada y) entre el número total de vértices para darles un valor entre 0 y 1. 
 
-### **Texture Mapping con Función**
-El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una función que genera secciones rojas sobre un fondo anarajando simulando el comportamiento del sol, realizado a bajo nivel mediante el uso de las funciones ```beginShape()``` y ```endShape()```.
-
-
+### **Mapeo de Bajo Nivel**
+El tercer mapeo de textura consiste en un plano 2D y una imagen de ... a bajo nivel mediante el uso de las funciones ```beginShape()``` y ```endShape()``` y la librería de cuadrícula ```p5.quadrille.js```.  
 
 ## **III. Resultados**
 
@@ -153,14 +153,11 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
 {{< details title="p5-instance-div markdown" open=false >}}
 ```js
-  const globe = [];
-  const r = 200;
-  const total = 50;
   let angleX = 0;
   let angleY = 0;
 
   function preload() {
-      earth = loadImage('https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ');
+      sun = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
   }
 
   function setup() {
@@ -168,18 +165,6 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       noFill();
       strokeWeight(2);
       stroke(200);
-
-      for (let i = 0; i < total + 1; i++) {
-          globe[i] = [];
-          const lat = map(i, 0, total, 0, PI);
-          for (let j = 0; j < total + 1; j++) {
-              const lon = map(j, 0, total, 0, TWO_PI);
-              const x = r * sin(lat) * cos(lon);
-              const y = r * sin(lat) * sin(lon);
-              const z = r * cos(lat);
-              globe[i][j] = createVector(x, y, z);
-          }
-      }
   }
 
   function draw() {
@@ -189,18 +174,8 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
       textureMode(NORMAL);
       texture(earth);
-      scale(-1,1);
 
-      for (let i = 0; i < total; i++) {
-          beginShape(TRIANGLE_STRIP);
-          for (let j = 0; j < total + 1; j++) {
-              const v1 = globe[i][j];
-              vertex(v1.x, v1.y, v1.z, j / total, i / total);
-              const v2 = globe[i + 1][j];
-              vertex(v2.x, v2.y, v2.z, j / total, (i + 1) / total);
-          }
-          endShape();
-      }
+      sphere(200);
 
       angleX += 0.005;
       angleY += 0.006;
@@ -212,15 +187,12 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
 <div align="center"> 
 
-{{< p5-global-iframe id="sphereEarth" width="520" height="530" >}}
-  const globe = [];
-  const r = 200;
-  const total = 50;
+{{< p5-global-iframe id="sphereSun" width="520" height="530" >}}
   let angleX = 0;
   let angleY = 0;
 
   function preload() {
-      earth = loadImage('https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ');
+      sun = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
   }
 
   function setup() {
@@ -228,18 +200,6 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       noFill();
       strokeWeight(2);
       stroke(200);
-
-      for (let i = 0; i < total + 1; i++) {
-          globe[i] = [];
-          const lat = map(i, 0, total, 0, PI);
-          for (let j = 0; j < total + 1; j++) {
-              const lon = map(j, 0, total, 0, TWO_PI);
-              const x = r * sin(lat) * cos(lon);
-              const y = r * sin(lat) * sin(lon);
-              const z = r * cos(lat);
-              globe[i][j] = createVector(x, y, z);
-          }
-      }
   }
 
   function draw() {
@@ -249,25 +209,15 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
       textureMode(NORMAL);
       texture(earth);
-      scale(-1,1);
 
-      for (let i = 0; i < total; i++) {
-          beginShape(TRIANGLE_STRIP);
-          for (let j = 0; j < total + 1; j++) {
-              const v1 = globe[i][j];
-              vertex(v1.x, v1.y, v1.z, j / total, i / total);
-              const v2 = globe[i + 1][j];
-              vertex(v2.x, v2.y, v2.z, j / total, (i + 1) / total);
-          }
-          endShape();
-      }
+      sphere(200);
 
       angleX += 0.005;
       angleY += 0.006;
-  }
+  }  
 {{< /p5-global-iframe >}} 
 
-*Figura 3. Esfera mapaeada con la imagen de la tierra.* 
+*Figura 3. Esfera mapaeada con la función del sol.* 
 
 </div>
 
@@ -282,7 +232,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   let angleY = 0;
 
   function preload() {
-      earth = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
+      earth = loadImage('https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ');
   }
 
   function setup() {
@@ -311,6 +261,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
       textureMode(NORMAL);
       texture(earth);
+      scale(-1,1);
 
       for (let i = 0; i < total; i++) {
           beginShape(TRIANGLE_STRIP);
@@ -341,7 +292,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   let angleY = 0;
 
   function preload() {
-      earth = loadImage('https://lh5.googleusercontent.com/M4WyVy1cQt8XdT2QLejuw1yCcS555TcsjcduaG1OG2XT__f-G35dEIUvv5TpXE5sL6OjZsdbVPMeum5n1iU-QawtQyhAoHmsUKPOO62E0KsVtvv_pBlsR2qFePFaKrdKcc_yftM6SKYtQ55aUQ');
+      earth = loadImage('https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ');
   }
 
   function setup() {
@@ -349,7 +300,6 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       noFill();
       strokeWeight(2);
       stroke(200);
-      art = createGraphics(400, 400);
 
       for (let i = 0; i < total + 1; i++) {
           globe[i] = [];
@@ -371,6 +321,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
       textureMode(NORMAL);
       texture(earth);
+      scale(-1,1);
 
       for (let i = 0; i < total; i++) {
           beginShape(TRIANGLE_STRIP);
@@ -388,9 +339,11 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   }
 {{< /p5-global-iframe >}} 
 
-*Figura 4. Esfera mapaeada con la función del sol.* 
+*Figura 4. Esfera mapaeada con la imagen de la tierra.* 
 
 </div>
+
+<br/>
 
 <!-- ---
 bookCollapseSection: true
@@ -399,7 +352,7 @@ bookCollapseSection: true
 
 ## **IV. Conclusiones**
 
-Para concluir, podemos resaltar en nuestras investigaciones que el campo de mapeo de texturas ha sido apropiado para investigaciones y desarrollos más complejos, para entender este proceso es necesario entender las bases y el bajo nivel de los gráficos, ádemas de conceptios matemáticos claves como sistemas de coordenadas y otros involucrados en rasterización. Como trabajo futuro se puede proponer el mapeo de texturas a súper geometrías y el desarrollo de estas a nivel matemático. 
+Para concluir, podemos resaltar en nuestras investigaciones que el campo de mapeo de texturas ha sido apropiado para investigaciones y desarrollos más complejos, para entender este proceso es necesario entender las bases y el bajo nivel de los gráficos, ádemas de conceptos matemáticos claves como sistemas de coordenadas, geoetría y otros involucrados en rasterización. Como trabajo futuro se puede proponer el mapeo de texturas de medio y bajo nivel a súper geometrías y el desarrollo de estas a nivel matemático debido al alto nivel de complejidad de estas figuras. Esta investigación se ha realizado de manera transversal por los distintos niveles de mapeo, afianzando los conocimientos y conceptos, convirtiéndose así en una buena ejemplificación práctica del mapeo de texturas.  
 
 ## **IV. Referencias**
 
