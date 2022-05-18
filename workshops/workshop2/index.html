@@ -1,15 +1,16 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Texture Mapping and &mldr; #  I. Introducción #  El mapeo de texturas es el método con el cual se realiza el detallado mediante color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Texture Mapping and &mldr; #  I. Introducción #  El mapeo de texturas es el método con el cual se realiza el detallado de color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.
 El proceso consiste en la obtención de una imagen mediante fotografía digital o escaneo y su manipulación mediante software para ser utilizada."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="Workshop2"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://feliperojas2601.github.io/VisualComputing-Showcase/workshops/workshop2/"><title>Workshop2 | Showcase Template</title><link rel=manifest href=/VisualComputing-Showcase/manifest.json><link rel=icon href=/VisualComputing-Showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/VisualComputing-Showcase/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/VisualComputing-Showcase/flexsearch.min.js></script>
-<script defer src=/VisualComputing-Showcase/en.search.min.4423c3087f63365948698b69ead3b21b8407cc3d47f0425c0f6da5c3a01df4a9.js integrity="sha256-RCPDCH9jNllIaYtp6tOyG4QHzD1H8EJcD22lw6Ad9Kk=" crossorigin=anonymous></script>
+<script defer src=/VisualComputing-Showcase/en.search.min.043cea86299565d7dfa435b5621cec26b80d50a41e24d352616c0dff3832a0b6.js integrity="sha256-BDzqhimVZdffpDW1YhzsJrgNUKQeJNNSYWwN/zgyoLY=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://feliperojas2601.github.io/VisualComputing-Showcase/workshops/workshop2/index.xml title="Showcase Template"></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/VisualComputing-Showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/VisualComputing-Showcase/members/>Members</a></li><li><a href=/VisualComputing-Showcase/workshops/>Illusions</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/VisualComputing-Showcase/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Workshop2</strong>
-<label for=toc-control><img src=/VisualComputing-Showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#texture-mapping-and-><strong>Texture Mapping and &mldr;</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#texture-mapping-con-imagen><strong>Texture Mapping con Imagen</strong></a></li><li><a href=#texture-mapping-con-función><strong>Texture Mapping con Función</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=texture-mapping-and-><strong>Texture Mapping and &mldr;</strong>
+<label for=toc-control><img src=/VisualComputing-Showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#texture-mapping-and-><strong>Texture Mapping and &mldr;</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#mapeo-de-alto-nivel><strong>Mapeo de Alto Nivel</strong></a></li><li><a href=#mapeo-de-medio-nivel><strong>Mapeo de Medio Nivel</strong></a></li><li><a href=#mapeo-de-bajo-nivel><strong>Mapeo de Bajo Nivel</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=texture-mapping-and-><strong>Texture Mapping and &mldr;</strong>
 <a class=anchor href=#texture-mapping-and->#</a></h1><div style=text-align:justify><h2 id=i-introducción><strong>I. Introducción</strong>
-<a class=anchor href=#i-introducci%c3%b3n>#</a></h2><p>El mapeo de texturas es el método con el cual se realiza el detallado mediante color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.<br>El proceso consiste en la obtención de una imagen mediante fotografía digital o escaneo y su manipulación mediante software para ser utilizada. Posteriormente, la aplicación es el mapeo de vértices del polígono a una coordenada de textura.
-El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando los tres vertices del tríangulo en la imagen, con coordenadas normalizadas en la imagen y calculando los puntos interiores utilizando coordenadas báricentricas, se presentará su correspondiente implementación en JavaScript utilizando la biblioteca de p5.js y WEBGL.</p><h2 id=ii-contextualización><strong>II. Contextualización</strong>
-<a class=anchor href=#ii-contextualizaci%c3%b3n>#</a></h2><h3 id=texture-mapping-con-imagen><strong>Texture Mapping con Imagen</strong>
-<a class=anchor href=#texture-mapping-con-imagen>#</a></h3><p>El primer mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a bajo nivel mediante el uso de las funciones <code>beginShape()</code> y <code>endShape()</code>.</p><div align=center><p><img src=https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ alt=Tierra></p><p><em>Figura 1. Plano 2D de la tierra.</em></p></div><p>Para realizar la esfera, utilizamos los conceptos de mapeo entre longitud/latitud en un plano 2D a la esfera utilizando ángulos.<br>Los valores de longitud y latitud estarán:</p><ul><li>$Long \in [0^o, 360^o].$</li><li>$Lat \in [0^o, 180^o].$</li></ul><p>Buscamos mapear los valores de $(r,lat,long) \arrow (x,y,z)$.</p><ul><li>$x = r sin(lat) cos(long)$</li><li>$y = r sin(lat) sin(long)$</li><li>$z = r cos(lat)$</li></ul><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
+<a class=anchor href=#i-introducci%c3%b3n>#</a></h2><p>El mapeo de texturas es el método con el cual se realiza el detallado de color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.<br>El proceso consiste en la obtención de una imagen mediante fotografía digital o escaneo y su manipulación mediante software para ser utilizada. Posteriormente, la aplicación es el mapeo de vértices del polígono a una coordenada de textura.
+El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando los tres vertices del tríangulo en la imagen, con coordenadas normalizadas en la imagen y calculando los puntos interiores utilizando coordenadas báricentricas, se presentará su correspondiente implementación bajo nivel junto con mapeos de medio y alto nivel en JavaScript utilizando la biblioteca de p5.js y WEBGL.</p><h2 id=ii-contextualización><strong>II. Contextualización</strong>
+<a class=anchor href=#ii-contextualizaci%c3%b3n>#</a></h2><h3 id=mapeo-de-alto-nivel><strong>Mapeo de Alto Nivel</strong>
+<a class=anchor href=#mapeo-de-alto-nivel>#</a></h3><p>El primer mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen a alto nivel mediante el uso de las funciones <code>texture()</code> y <code>sphere()</code>.</p><h3 id=mapeo-de-medio-nivel><strong>Mapeo de Medio Nivel</strong>
+<a class=anchor href=#mapeo-de-medio-nivel>#</a></h3><p>El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a medio nivel mediante el uso de las funciones <code>texture()</code>, <code>beginShape()</code> y <code>endShape()</code>.</p><div align=center><p><img src=https://lh6.googleusercontent.com/IwEkyWS6TCXKxJWlsIaylCZT53k3i6nhXs2xo6Fduap28MgLZMyypiK9KHvJDi7APkDkzh5-80y3i1PdPL_XeCn72HspV9z_jTThXpG3VCee0NUoJ_RBezRKSBWXn6YtgbBKPhL23x1ruQImzQ alt=Tierra></p><p><em>Figura 1. Plano 2D de la tierra.</em></p></div><p>Para realizar la esfera, utilizamos los conceptos de mapeo entre longitud/latitud en un plano 2D a la esfera utilizando ángulos.<br>Los valores de longitud y latitud estarán:</p><ul><li>$Long \in [0^o, 360^o].$</li><li>$Lat \in [0^o, 180^o].$</li></ul><p>Buscamos mapear los valores de $(r,lat,long) \arrow (x,y,z)$.</p><ul><li>$x = r sin(lat) cos(long)$</li><li>$y = r sin(lat) sin(long)$</li><li>$z = r cos(lat)$</li></ul><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span>;
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>25</span>;
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
@@ -116,9 +117,82 @@ El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando lo
           <body>
           </body>
         </html>
-      "></iframe><p><em>Figura 2. Esfera construida a bajo nivel.</em></p></div><p>Por último, es necesario establecer el modo de textura normalizado y dividir nuestros valores de longitud (coordenada x) y latitud (coordenada y) entre el número total de vértices para darles un valor entre 0 y 1.</p><h3 id=texture-mapping-con-función><strong>Texture Mapping con Función</strong>
-<a class=anchor href=#texture-mapping-con-funci%c3%b3n>#</a></h3><p>El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una función que genera secciones rojas sobre un fondo anarajando simulando el comportamiento del sol, realizado a bajo nivel mediante el uso de las funciones <code>beginShape()</code> y <code>endShape()</code>.</p><h2 id=iii-resultados><strong>III. Resultados</strong>
-<a class=anchor href=#iii-resultados>#</a></h2><p>La implementación utilizando p5.js realizada para los casos anteriores se muestra a continuación:</p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
+      "></iframe><p><em>Figura 2. Esfera construida a bajo nivel.</em></p></div><p>Por último, es necesario establecer el modo de textura normalizado y dividir nuestros valores de longitud (coordenada x) y latitud (coordenada y) entre el número total de vértices para darles un valor entre 0 y 1.</p><h3 id=mapeo-de-bajo-nivel><strong>Mapeo de Bajo Nivel</strong>
+<a class=anchor href=#mapeo-de-bajo-nivel>#</a></h3><p>El tercer mapeo de textura consiste en un plano 2D y una imagen de &mldr; a bajo nivel mediante el uso de las funciones <code>beginShape()</code> y <code>endShape()</code> y la librería de cuadrícula <code>p5.quadrille.js</code>.</p><h2 id=iii-resultados><strong>III. Resultados</strong>
+<a class=anchor href=#iii-resultados>#</a></h2><p>La implementación utilizando p5.js realizada para los casos anteriores se muestra a continuación:</p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>      sun <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w&#39;</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>noFill</span>();
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>51</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angleX</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angleY</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>earth</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>sphere</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.005</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.006</span>;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div></div></details><br><div align=center><iframe id=sphereSun style=width:520px;height:530px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script>
+              
+  let angleX = 0;
+  let angleY = 0;
+
+  function preload() {
+      sun = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
+  }
+
+  function setup() {
+      createCanvas(500, 500, WEBGL);
+      noFill();
+      strokeWeight(2);
+      stroke(200);
+  }
+
+  function draw() {
+      background(51);
+      rotateX(angleX);
+      rotateY(angleY);
+
+      textureMode(NORMAL);
+      texture(earth);
+
+      sphere(200);
+
+      angleX += 0.005;
+      angleY += 0.006;
+  }  
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><p><em>Figura 3. Esfera mapaeada con la función del sol.</em></p></div><br><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span>;
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>50</span>;
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
@@ -241,129 +315,7 @@ El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando lo
           <body>
           </body>
         </html>
-      "></iframe><p><em>Figura 3. Esfera mapaeada con la imagen de la tierra.</em></p></div><br><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>50</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>earth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w&#39;</span>);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>500</span>, <span style=color:#ae81ff>500</span>, <span style=color:#a6e22e>WEBGL</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>noFill</span>();
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>] <span style=color:#f92672>=</span> [];
-</span></span><span style=display:flex><span>          <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lat</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>i</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>PI</span>);
-</span></span><span style=display:flex><span>          <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>lon</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>j</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>total</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>TWO_PI</span>);
-</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lon</span>);
-</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>y</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lat</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>sin</span>(<span style=color:#a6e22e>lon</span>);
-</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>z</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>cos</span>(<span style=color:#a6e22e>lat</span>);
-</span></span><span style=display:flex><span>              <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVector</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>);
-</span></span><span style=display:flex><span>          }
-</span></span><span style=display:flex><span>      }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>51</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angleX</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angleY</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>earth</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>beginShape</span>(<span style=color:#a6e22e>TRIANGLE_STRIP</span>);
-</span></span><span style=display:flex><span>          <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>];
-</span></span><span style=display:flex><span>              <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>z</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>, <span style=color:#a6e22e>i</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>);
-</span></span><span style=display:flex><span>              <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>globe</span>[<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>][<span style=color:#a6e22e>j</span>];
-</span></span><span style=display:flex><span>              <span style=color:#a6e22e>vertex</span>(<span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>z</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>, (<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>/</span> <span style=color:#a6e22e>total</span>);
-</span></span><span style=display:flex><span>          }
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>endShape</span>();
-</span></span><span style=display:flex><span>      }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.005</span>;
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.006</span>;
-</span></span><span style=display:flex><span>  }
-</span></span></code></pre></div></div></details><br><div align=center><iframe id=sphereEarth style=width:520px;height:530px srcdoc="
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js></script>
-            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js></script>
-            
-            
-            
-            
-            
-            <script>
-              
-  const globe = [];
-  const r = 200;
-  const total = 50;
-  let angleX = 0;
-  let angleY = 0;
-
-  function preload() {
-      earth = loadImage('https://lh5.googleusercontent.com/M4WyVy1cQt8XdT2QLejuw1yCcS555TcsjcduaG1OG2XT__f-G35dEIUvv5TpXE5sL6OjZsdbVPMeum5n1iU-QawtQyhAoHmsUKPOO62E0KsVtvv_pBlsR2qFePFaKrdKcc_yftM6SKYtQ55aUQ');
-  }
-
-  function setup() {
-      createCanvas(500, 500, WEBGL);
-      noFill();
-      strokeWeight(2);
-      stroke(200);
-      art = createGraphics(400, 400);
-
-      for (let i = 0; i < total + 1; i++) {
-          globe[i] = [];
-          const lat = map(i, 0, total, 0, PI);
-          for (let j = 0; j < total + 1; j++) {
-              const lon = map(j, 0, total, 0, TWO_PI);
-              const x = r * sin(lat) * cos(lon);
-              const y = r * sin(lat) * sin(lon);
-              const z = r * cos(lat);
-              globe[i][j] = createVector(x, y, z);
-          }
-      }
-  }
-
-  function draw() {
-      background(51);
-      rotateX(angleX);
-      rotateY(angleY);
-
-      textureMode(NORMAL);
-      texture(earth);
-
-      for (let i = 0; i < total; i++) {
-          beginShape(TRIANGLE_STRIP);
-          for (let j = 0; j < total + 1; j++) {
-              const v1 = globe[i][j];
-              vertex(v1.x, v1.y, v1.z, j / total, i / total);
-              const v2 = globe[i + 1][j];
-              vertex(v2.x, v2.y, v2.z, j / total, (i + 1) / total);
-          }
-          endShape();
-      }
-
-      angleX += 0.005;
-      angleY += 0.006;
-  }
-
-            </script>
-          </head>
-          <body>
-          </body>
-        </html>
-      "></iframe><p><em>Figura 4. Esfera mapaeada con la función del sol.</em></p></div><h2 id=iv-conclusiones><strong>IV. Conclusiones</strong>
-<a class=anchor href=#iv-conclusiones>#</a></h2><p>Para concluir, podemos resaltar en nuestras investigaciones que el campo de mapeo de texturas ha sido apropiado para investigaciones y desarrollos más complejos, para entender este proceso es necesario entender las bases y el bajo nivel de los gráficos, ádemas de conceptios matemáticos claves como sistemas de coordenadas y otros involucrados en rasterización. Como trabajo futuro se puede proponer el mapeo de texturas a súper geometrías y el desarrollo de estas a nivel matemático.</p><h2 id=iv-referencias><strong>IV. Referencias</strong>
-<a class=anchor href=#iv-referencias>#</a></h2><ul><li>Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. <a href=https://en.wikipedia.org/wiki/Texture_mapping>https://en.wikipedia.org/wiki/Texture_mapping</a>. <a href=https://en.wikipedia.org/wiki/Texture_mapping>Wikipedia</a></li><li>Wikipedia contributors. (2022b, mayo 16). Spherical coordinate system. Wikipedia. <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>https://en.wikipedia.org/wiki/Spherical_coordinate_system</a> <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>Wikipedia</a></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/dc210414317f35af0ccb3117cc067f59a30115ef title="Last modified by FelipeRojas | May 16, 2022" target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 16, 2022</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#texture-mapping-and-><strong>Texture Mapping and &mldr;</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#texture-mapping-con-imagen><strong>Texture Mapping con Imagen</strong></a></li><li><a href=#texture-mapping-con-función><strong>Texture Mapping con Función</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></div></aside></main></body></html>
+      "></iframe><p><em>Figura 4. Esfera mapaeada con la imagen de la tierra.</em></p></div><br><h2 id=iv-conclusiones><strong>IV. Conclusiones</strong>
+<a class=anchor href=#iv-conclusiones>#</a></h2><p>Para concluir, podemos resaltar en nuestras investigaciones que el campo de mapeo de texturas ha sido apropiado para investigaciones y desarrollos más complejos, para entender este proceso es necesario entender las bases y el bajo nivel de los gráficos, ádemas de conceptos matemáticos claves como sistemas de coordenadas, geoetría y otros involucrados en rasterización. Como trabajo futuro se puede proponer el mapeo de texturas de medio y bajo nivel a súper geometrías y el desarrollo de estas a nivel matemático debido al alto nivel de complejidad de estas figuras. Esta investigación se ha realizado de manera transversal por los distintos niveles de mapeo, afianzando los conocimientos y conceptos, convirtiéndose así en una buena ejemplificación práctica del mapeo de texturas.</p><h2 id=iv-referencias><strong>IV. Referencias</strong>
+<a class=anchor href=#iv-referencias>#</a></h2><ul><li>Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. <a href=https://en.wikipedia.org/wiki/Texture_mapping>https://en.wikipedia.org/wiki/Texture_mapping</a>. <a href=https://en.wikipedia.org/wiki/Texture_mapping>Wikipedia</a></li><li>Wikipedia contributors. (2022b, mayo 16). Spherical coordinate system. Wikipedia. <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>https://en.wikipedia.org/wiki/Spherical_coordinate_system</a> <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>Wikipedia</a></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/6c1f61d8594a153e501c622ec4f6deeca3c8e8d1 title="Last modified by FelipeRojas | May 18, 2022" target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>May 18, 2022</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#texture-mapping-and-><strong>Texture Mapping and &mldr;</strong></a><ul><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#mapeo-de-alto-nivel><strong>Mapeo de Alto Nivel</strong></a></li><li><a href=#mapeo-de-medio-nivel><strong>Mapeo de Medio Nivel</strong></a></li><li><a href=#mapeo-de-bajo-nivel><strong>Mapeo de Bajo Nivel</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#iv-referencias><strong>IV. Referencias</strong></a></li></ul></li></ul></nav></div></aside></main></body></html>
