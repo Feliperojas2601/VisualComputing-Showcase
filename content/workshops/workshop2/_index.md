@@ -192,7 +192,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   let angleY = 0;
 
   function preload() {
-      sun = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
+      sun = loadImage('https://lh3.googleusercontent.com/n40SDUar2pRK6lgqHLc_KFUmcB755dpTJAnhVzMGiHQXmpcr-4a3jfIBF7hE3hLsFN5ITu4XCZ_RNLTjixIiLkc9Y0OrgQ_iK7IlvXpLIKO16bbn41MJeV4bxSsT397vpdherxVuKjve9DZnEw');
   }
 
   function setup() {
