@@ -173,7 +173,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       rotateY(angleY);
 
       textureMode(NORMAL);
-      texture(earth);
+      texture(sun);
 
       sphere(200);
 
@@ -208,7 +208,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       rotateY(angleY);
 
       textureMode(NORMAL);
-      texture(earth);
+      texture(sun);
 
       sphere(200);
 
