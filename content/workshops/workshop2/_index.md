@@ -16,9 +16,7 @@ El mapeado UV consiste en el mapeado de un plano 2D a un tríangulo, ubicando lo
 ## **II. Contextualización**  
 
 ### **Mapeo de Alto Nivel**
-El primer mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen a alto nivel mediante el uso de las funciones ```texture()``` y ```sphere()```. 
-### **Mapeo de Medio Nivel**
-El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a medio nivel mediante el uso de las funciones ```texture()```, ```beginShape()``` y ```endShape()```.  
+El primer mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a alto nivel mediante el uso de las funciones ```texture()``` y ```sphere()```. 
 
 <div align="center"> 
 
@@ -27,6 +25,9 @@ El segundo mapeo de textura consiste en una esfera (sólido de revolución y no 
 *Figura 1. Plano 2D de la tierra.* 
 
 </div>
+
+### **Mapeo de Medio Nivel**
+El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a medio nivel mediante el uso de las funciones ```texture()```, ```beginShape()``` y ```endShape()```.  
 
 Para realizar la esfera, utilizamos los conceptos de mapeo entre longitud/latitud en un plano 2D a la esfera utilizando ángulos.  
 Los valores de longitud y latitud estarán:   
@@ -145,7 +146,7 @@ Buscamos mapear los valores de $(r,lat,long) \arrow (x,y,z)$.
 Por último, es necesario establecer el modo de textura normalizado y dividir nuestros valores de longitud (coordenada x) y latitud (coordenada y) entre el número total de vértices para darles un valor entre 0 y 1. 
 
 ### **Mapeo de Bajo Nivel**
-El tercer mapeo de textura consiste en un plano 2D y una imagen de ... a bajo nivel mediante el uso de las funciones ```beginShape()``` y ```endShape()``` y la librería de cuadrícula ```p5.quadrille.js```.  
+El tercer mapeo de textura consiste en un plano 2D y una imagen de la tierra [figura 1] a bajo nivel mediante el uso de las funciones ```beginShape()``` y ```endShape()``` y la librería de cuadrícula ```p5.quadrille.js```.  
 
 ## **III. Resultados**
 
@@ -157,7 +158,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   let angleY = 0;
 
   function preload() {
-      sun = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
+      earth = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
   }
 
   function setup() {
@@ -173,7 +174,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       rotateY(angleY);
 
       textureMode(NORMAL);
-      texture(sun);
+      texture(earth);
 
       sphere(200);
 
@@ -192,7 +193,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   let angleY = 0;
 
   function preload() {
-      sun = loadImage('https://lh3.googleusercontent.com/n40SDUar2pRK6lgqHLc_KFUmcB755dpTJAnhVzMGiHQXmpcr-4a3jfIBF7hE3hLsFN5ITu4XCZ_RNLTjixIiLkc9Y0OrgQ_iK7IlvXpLIKO16bbn41MJeV4bxSsT397vpdherxVuKjve9DZnEw');
+      earth = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
   }
 
   function setup() {
@@ -208,7 +209,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
       rotateY(angleY);
 
       textureMode(NORMAL);
-      texture(sun);
+      texture(earth);
 
       sphere(200);
 
