@@ -149,7 +149,7 @@ Buscamos mapear los valores de $(r,lat,long) \arrow (x,y,z)$.
 Por último, es necesario establecer el modo de textura normalizado y dividir nuestros valores de longitud (coordenada x) y latitud (coordenada y) entre el número total de vértices para darles un valor entre 0 y 1. 
 
 ### **Mapeo de Bajo Nivel**
-El tercer mapeo de textura consiste en interpolar a bajo nivel los pixeles de una imagen de la tierra [figura 1] en un plano 2D con los triángulos que conforman el *mesh* de la esfera mediante el uso de las coordenadas baricéntricas, entendiendo como las proporciones de la textura original se modifican de acuerdo a la superficie que se busca texturizar.
+El tercer mapeo de textura consiste en interpolar a bajo nivel los pixeles de una imagen de la tierra [figura 1] en un plano 2D con los triángulos que conforman el *mesh* de la esfera mediante el uso de las coordenadas baricéntricas, donde a partir de los *(x, y)* de tres vértices adyacentes, se calculan las coordenadas baricéntricas para los triángulos que conforman, y se interpola el valor RGBA de cada pixel. De esta manera se comprende mejor como las proporciones de la textura original se modifican de acuerdo a la superficie que se busca texturizar.
 
 ## **III. Resultados**
 
