@@ -30,7 +30,8 @@ El primer mapeo de textura consiste en una esfera (sólido de revolución y no p
 El segundo mapeo de textura consiste en una esfera (sólido de revolución y no polígono) y una imagen de la tierra [figura 1] a medio nivel mediante el uso de las funciones ```texture()```, ```beginShape()``` y ```endShape()```.  
 
 Para realizar la esfera, utilizamos los conceptos de mapeo entre longitud/latitud en un plano 2D a la esfera utilizando ángulos.  
-Los valores de longitud y latitud estarán:   
+Los valores de longitud y latitud estarán:  
+
 - $Long \in [0^o, 360^o].$
 - $Lat \in [0^o, 180^o].$  
   
@@ -163,9 +164,6 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
   function setup() {
       createCanvas(500, 500, WEBGL);
-      noFill();
-      strokeWeight(2);
-      stroke(200);
   }
 
   function draw() {
@@ -198,9 +196,6 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
 
   function setup() {
       createCanvas(500, 500, WEBGL);
-      noFill();
-      strokeWeight(2);
-      stroke(200);
   }
 
   function draw() {
@@ -218,7 +213,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   }  
 {{< /p5-global-iframe >}} 
 
-*Figura 3. Esfera mapaeada con la función del sol.* 
+*Figura 3. Esfera mapeada con la imagen de la tierra a alto nivel.* 
 
 </div>
 
@@ -340,7 +335,7 @@ La implementación utilizando p5.js realizada para los casos anteriores se muest
   }
 {{< /p5-global-iframe >}} 
 
-*Figura 4. Esfera mapaeada con la imagen de la tierra.* 
+*Figura 4. Esfera mapeada con la imagen de la tierra a medio nivel.* 
 
 </div>
 
