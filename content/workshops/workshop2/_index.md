@@ -381,10 +381,54 @@ Para el modelo utilizado en ```Handpose``` de M5l.js, se utiliza un seguimiento 
   - Estimación de posición mediante el uso del modelo y el grafo de estados. 
   - Opcional: Reconocimiento de gestos. 
 
-El modelo de estimación funciona de tal forma blablabla ...    
+El modelo de estimación etiqueta cada articulación de los dedos, genera un sistema de ejes en cada articulación (21 en total) y proyecta un rayo utilizando la bisectriz. Con cada uno de estos rayos de proyección se estima a un punto en las 3 dimensiones y con estas correspondencias se estima la pose actual de la mano. El siguiente es un pseudocódigo que tiene en cuenta la oclusión de ciertas articulaciones:  
+``` 
+(a) Reconstruya los rayos de proyección a partir de los puntos de la imagen.  
+(b) Para cada rayo de proyección R:
+(c) Para cada contorno 3D:
+      (c1) Estime el punto P1 más cercano del rayo R a un punto en el contorno
+      (c2) si (n == 1) elige P1 como P real para la correspondencia punto-línea
+      (c3) si no, compare P1 con P:
+                si dist(P1, R) es menor que dist(P, R) entonces
+                    elegir P1 como nuevo P
+(d) Utilice (P, R) como conjunto de correspondencia.
+(e) Estimar pose con este conjunto de correspondencia
+(f) Transformar contornos, ir a (b) 
+```
 
+En este campo también es posible resaltar la extracción de datos utilizando sistemas láser como el Smart Scanner Laser que es independiente de modelos para la conversión y estimación de 2D a 3D, ya que estos son capaces de obtener las coordenadas tridimensionales sin utilizar procesamiento de imágenes peor con un campo de visión más restringido.  
+
+Con respecto a las aplicaciones actuales y desarrollos futuros se pueden resaltar:  
+
+- Realidad virtual.
+- Realidad aumentada. 
+- Modelados 3D. 
+- Animación y Motion Capture.
+- Simplificación de tareas computacionales vía gestos interactivos.  
+
+Esta última aplicación junto con la realidad aumentada son con posibilidad las más amplias y ambiciosas pues pretenden facilitar en términos de usabilidad distintos sistemas computacionales mediante la interacción de gestos sin perder precisión en estas así como la creación y masificación de experiencias con mayor inmersividad en sistemas que van desde información y manejo de datos hasta juegos y filtros de la cámara. Empresas como Google [Figura 6], Apple, Microsoft trabajan diariamente en la mejora de precisión y rendimiento en sus sensores. 
+
+<div align="center"> 
+
+![Google](https://lh5.googleusercontent.com/W_b7o3WODGVY-5pa5JA_QUiFm250Dzs_QlrjpeYR5hNWWrWwcXtLTs9ijCzRB3Tle4MCrDzBMzPrPsasUUzYZ6_Q6DhyWL8zWAJTDzrvvItvTdwVePmcUV9ERNAQaccl44G67MPBYo30SwkeNQ)
+
+*Figura 6. Lanzamiento del API de Google. Tomado de : [Twitter](https://twitter.com/GoogleAI/status/1163537878942547968?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1163537878942547968%7Ctwgr%5E%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Femiliusvgs.com%2Fgoogle-ai-realidad-aumentada-hand-finger-tracking%2F)* 
+
+</div>
+
+``` Handpose ``` utiliza este modelo de TensorFlow lanzado por Google en 2019 que le permite reconocer una mano y 21 puntos de interacción en esta.  Este modelo se carga desde ``` const handpose = ml5.handpose(?video, ?options, ?callback); ``` con 3 parámetros opcionales, el HTMLVideoElement para la estimación de secuencias, un objeto de configuraciones donde se encuentran los frames, el valor de confianza para las predicciones, entre otros y por último, una función que se ejecutará cuando el modelo termine de cargarse. Cuenta con funciones muy intuitivas y simples como lo  ``` predict() ``` y ``` on() ```. La mejor manera de entender su uso es con un ejemplo práctico. 
+
+## **III. Resultados**
+
+## **IV. Conclusiones**
+
+Para concluir, podemos resaltar en nuestras investigaciones que el sector de la interacción tridimensional entre usuario y máquina es rotundamente interesante desde la extracción de los datos hasta la manipulación y múltiples resultados posibles con estos. Con respecto al Finger Tracking, encontramos que es un campo que sigue en crecimiento y desarrollo a día hoy y su propuesta en términos de interacción vía gestos es ambiciosa, voraz y el camino a seguir. Por último, resaltar iniciativas con Ml5.js que buscan masificar el uso de Inteligencia Artificial y Machine Learning mediante un API sencilla y fácil de implementar en relación a la computación gráfica.  
+Es importante que sigan surgiendo estas iniciativas de código abierto con el fin de educar y avanzar la tecnología para todos.   
 
 ## **V. Referencias**
 
 - Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. https://en.wikipedia.org/wiki/Texture_mapping. [Wikipedia](https://en.wikipedia.org/wiki/Texture_mapping)
-- Wikipedia contributors. (2022b, mayo 16). Spherical coordinate system. Wikipedia. https://en.wikipedia.org/wiki/Spherical_coordinate_system [Wikipedia](https://en.wikipedia.org/wiki/Spherical_coordinate_system)
+- Wikipedia contributors. (2022, mayo 16). Spherical coordinate system. Wikipedia. https://en.wikipedia.org/wiki/Spherical_coordinate_system [Wikipedia](https://en.wikipedia.org/wiki/Spherical_coordinate_system)
+- Ml5 - A friendly machine learning library for the web. (2022). M5l Https://Ml5js.Org/. [M5l-Handpose](https://learn.ml5js.org/#/reference/handpose)
+- Wikipedia contributors. (2021, 29 agosto). Finger tracking. Wikipedia. https://en.wikipedia.org/wiki/Finger_tracking [Wikipedia](https://en.wikipedia.org/wiki/Finger_tracking)
+- Wikipedia contributors. (2022, marzo 19). 3D pose estimation. Wikipedia. https://en.wikipedia.org/wiki/3D_pose_estimation [Wikipedia](https://en.wikipedia.org/wiki/3D_pose_estimation)
