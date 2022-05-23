@@ -1,6 +1,6 @@
 <!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Texture Mapping and Finger Tracking with ML5 MediaPipe Hands #  Texture Mapping #  I. Introducción #  El mapeo de texturas es el método con el cual se realiza el detallado de color a un objeto 3D. Actualmente, se han desarrollado mapeos más complejos implicando diferentes tipos de transformaciones y polígonos como el mapeo de reflexión, relieve, entre otros.
 El proceso consiste en la obtención de una imagen mediante fotografía digital o escaneo y su manipulación mediante software para ser utilizada."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="Workshop2"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://feliperojas2601.github.io/VisualComputing-Showcase/workshops/workshop2/"><title>Workshop2 | Showcase Template</title><link rel=manifest href=/VisualComputing-Showcase/manifest.json><link rel=icon href=/VisualComputing-Showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/VisualComputing-Showcase/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/VisualComputing-Showcase/flexsearch.min.js></script>
-<script defer src=/VisualComputing-Showcase/en.search.min.c7f29ab974538405e71f9add3d26eb2e0d5341c12f2e6774e23e069a40d0f1e4.js integrity="sha256-x/KauXRThAXnH5rdPSbrLg1TQcEvLmd04j4GmkDQ8eQ=" crossorigin=anonymous></script>
+<script defer src=/VisualComputing-Showcase/en.search.min.43bf55ec71596b64a8a0a91f43b74051e2f9aaa1ba0c50c1d9e5042dd514bcd8.js integrity="sha256-Q79V7HFZa2SooKkfQ7dAUeL5qqG6DFDB2eUELdUUvNg=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://feliperojas2601.github.io/VisualComputing-Showcase/workshops/workshop2/index.xml title="Showcase Template"></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/VisualComputing-Showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/VisualComputing-Showcase/members/>Members</a></li><li><a href=/VisualComputing-Showcase/workshops/>Workshops</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/VisualComputing-Showcase/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Workshop2</strong>
@@ -121,7 +121,7 @@ rotateY(angleY);
           </body>
         </html>
       "></iframe><p><em>Figura 2. Esfera construida a bajo nivel.</em></p></div><p>Por último, es necesario establecer el modo de textura normalizado y dividir nuestros valores de longitud (coordenada x) y latitud (coordenada y) entre el número total de vértices para darles un valor entre 0 y 1.</p><h3 id=mapeo-de-bajo-nivel><strong>Mapeo de Bajo Nivel</strong>
-<a class=anchor href=#mapeo-de-bajo-nivel>#</a></h3><p>El tercer mapeo de textura consiste en interpolar a bajo nivel los pixeles de una imagen de la tierra [figura 1] en un plano 2D con los triángulos que conforman el <em>mesh</em> de la esfera mediante el uso de las coordenadas baricéntricas, donde a partir de los <em>(x, y)</em> de tres vértices adyacentes, se calculan las coordenadas baricéntricas para los triángulos que conforman, y se interpola el valor RGBA de cada pixel. De esta manera se comprende mejor como las proporciones de la textura original se modifican de acuerdo a la superficie que se busca texturizar.</p><h2 id=iii-resultados><strong>III. Resultados</strong>
+<a class=anchor href=#mapeo-de-bajo-nivel>#</a></h3><p>El tercer mapeo de textura consiste en interpolar a bajo nivel los pixeles de una imagen de la tierra [figura 1] en un plano 2D con los triángulos que conforman el <em>mesh</em> de la elipse mediante el uso de las coordenadas baricéntricas, donde a partir de los <em>(x, y)</em> de tres vértices adyacentes, se calculan las coordenadas baricéntricas para los triángulos que conforman, y se interpola el valor RGBA de cada pixel. De esta manera se comprende mejor como las proporciones de la textura original se modifican de acuerdo a la figura que se busca texturizar.</p><h2 id=iii-resultados><strong>III. Resultados</strong>
 <a class=anchor href=#iii-resultados>#</a></h2><p>La implementación utilizando p5.js realizada para los casos anteriores se muestra a continuación:</p><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angleY</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>
@@ -319,11 +319,10 @@ rotateY(angleY);
           <body>
           </body>
         </html>
-      "></iframe><p><em>Figura 4. Esfera mapeada con la imagen de la tierra a medio nivel.</em></p></div><br><br><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>globe</span> <span style=color:#f92672>=</span> [];
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>20</span>;
+      "></iframe><p><em>Figura 4. Esfera mapeada con la imagen de la tierra a medio nivel.</em></p></div><br><br><details><summary>p5-instance-div markdown</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>figure</span> <span style=color:#f92672>=</span> [];
 </span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>COLORS</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>4</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ROWS</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>400</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>COLS</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>400</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ROWS</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>500</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>COLS</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1000</span>;
 </span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>earth</span>;
 </span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>triangleWidth</span>;
 </span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>triangleHeight</span>;
@@ -331,95 +330,101 @@ rotateY(angleY);
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>pg</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>earth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w&#34;</span>
-</span></span><span style=display:flex><span>  );
-</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>earth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//earth.loadPixels();
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>loadPixels</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>createCanvas</span>(
-</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>COLS</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>) <span style=color:#f92672>/</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span>,
-</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>ROWS</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>) <span style=color:#f92672>/</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span>
-</span></span><span style=display:flex><span>  );
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pixelDensity</span>(<span style=color:#ae81ff>1</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>pixelDensity</span>(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>loadPixels</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>pixelDensity</span>(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>pg</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>pixelDensity</span>(<span style=color:#ae81ff>1</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>noLoop</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>noFill</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>noLoop</span>(); 
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>noFill</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>stroke</span>(<span style=color:#ae81ff>200</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>triangleWidth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>COLS</span>;
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>triangleHeight</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>ROWS</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>matrix</span>.<span style=color:#a6e22e>push</span>([]);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>i</span>].<span style=color:#a6e22e>push</span>([]);
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>c</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>c</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>COLORS</span>; <span style=color:#a6e22e>c</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>][<span style=color:#a6e22e>c</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>c</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>triangleWidth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>COLS</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>triangleHeight</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#a6e22e>ROWS</span>;
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>matrix</span>.<span style=color:#a6e22e>push</span>([]);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>i</span>].<span style=color:#a6e22e>push</span>([]);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>c</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>c</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>COLORS</span>; <span style=color:#a6e22e>c</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>][<span style=color:#a6e22e>c</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>c</span>;
+</span></span><span style=display:flex><span>        }
 </span></span><span style=display:flex><span>      }
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>row</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>while</span> (
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>index</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>pixels</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>&amp;&amp;</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>row</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>&amp;&amp;</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>
-</span></span><span style=display:flex><span>  ) {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>row</span>][<span style=color:#a6e22e>col</span>][<span style=color:#a6e22e>index</span> <span style=color:#f92672>%</span> <span style=color:#a6e22e>COLORS</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>pixels</span>[<span style=color:#a6e22e>index</span>];
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&gt;=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>row</span><span style=color:#f92672>++</span>;
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>col</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>index</span> <span style=color:#f92672>%</span> <span style=color:#a6e22e>COLORS</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>col</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>%</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>row</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>col</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> (<span style=color:#a6e22e>index</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>pixels</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>row</span>][<span style=color:#a6e22e>col</span>][<span style=color:#a6e22e>index</span> <span style=color:#f92672>%</span> <span style=color:#a6e22e>COLORS</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>pixels</span>[<span style=color:#a6e22e>index</span>];
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> ((<span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>&gt;=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>row</span><span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>index</span> <span style=color:#f92672>%</span> <span style=color:#a6e22e>COLORS</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>%</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>index</span><span style=color:#f92672>++</span>;
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>index</span><span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>minX</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>maxX</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>ROWS</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>figure</span>[<span style=color:#a6e22e>i</span>] <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>COLS</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>triangleHeight</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>y</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>triangleWidth</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>minX</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>min</span>(<span style=color:#a6e22e>minX</span>, <span style=color:#a6e22e>x</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>maxX</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>max</span>(<span style=color:#a6e22e>maxX</span>, <span style=color:#a6e22e>x</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>figure</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVector</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print</span>(<span style=color:#a6e22e>minX</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print</span>(<span style=color:#a6e22e>maxX</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>loadPixels</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>triangles</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>updatePixels</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>image</span>(<span style=color:#a6e22e>pg</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>);
 </span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>loadPixels</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>triangles</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>updatePixels</span>();
-</span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>51</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>image</span>(<span style=color:#a6e22e>pg</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>);
-</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>triangles</span>() {
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>ROWS</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>COLS</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>interpolateTrianglePixels</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>figure</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>];
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>xVal</span> <span style=color:#f92672>=</span> ((<span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>) <span style=color:#f92672>*</span> (<span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>)) <span style=color:#f92672>/</span> (<span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>4</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>yVal</span> <span style=color:#f92672>=</span> ((<span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>y</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>) <span style=color:#f92672>*</span> (<span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>y</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>)) <span style=color:#f92672>/</span> (<span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>4</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>xVal</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>yVal</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>1</span>){
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>interpolateTrianglePixels</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>);
+</span></span><span style=display:flex><span>      }
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>interpolateTrianglePixels</span>(<span style=color:#a6e22e>row</span>, <span style=color:#a6e22e>col</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row0</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col0</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row0Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>row0</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleHeight</span>),
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col0Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>col0</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleWidth</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row1Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>row1</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleHeight</span>),
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col1Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>col1</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleWidth</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row2Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>row2</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleHeight</span>),
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col2Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>col2</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleWidth</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row3Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>row3</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleHeight</span>),
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>col3Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>col3</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>triangleWidth</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>g</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row0</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span>,     <span style=color:#a6e22e>col0</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>col1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span>,     <span style=color:#a6e22e>col2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>col3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v0</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>figure</span>[<span style=color:#a6e22e>row0</span>][<span style=color:#a6e22e>col0</span>];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>figure</span>[<span style=color:#a6e22e>row1</span>][<span style=color:#a6e22e>col1</span>];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>figure</span>[<span style=color:#a6e22e>row2</span>][<span style=color:#a6e22e>col2</span>];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>v3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>figure</span>[<span style=color:#a6e22e>row3</span>][<span style=color:#a6e22e>col3</span>];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row0Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v0</span>.<span style=color:#a6e22e>x</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>col0Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v0</span>.<span style=color:#a6e22e>y</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row1Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>x</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>col1Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v1</span>.<span style=color:#a6e22e>y</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row2Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>x</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>col2Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v2</span>.<span style=color:#a6e22e>y</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>row3Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v3</span>.<span style=color:#a6e22e>x</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>col3Pix</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>floor</span>(<span style=color:#a6e22e>v3</span>.<span style=color:#a6e22e>y</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>g</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>color0</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>color</span>(
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>row0Pix</span>][<span style=color:#a6e22e>col0Pix</span>][<span style=color:#a6e22e>r</span>],
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>matrix</span>[<span style=color:#a6e22e>row0Pix</span>][<span style=color:#a6e22e>col0Pix</span>][<span style=color:#a6e22e>g</span>],
@@ -446,44 +451,18 @@ rotateY(angleY);
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>row0Pix</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>row3Pix</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>col0Pix</span>; <span style=color:#a6e22e>j</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>col3Pix</span>; <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>coordsT1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>barycentric_coords</span>(
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>i</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>j</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>row0Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col0Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>row1Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col1Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>row2Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col2Pix</span>
-</span></span><span style=display:flex><span>      );
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>coordsT2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>barycentric_coords</span>(
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>i</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>j</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>row1Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col1Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>row2Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col2Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>row3Pix</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>col3Pix</span>
-</span></span><span style=display:flex><span>      );
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>setPixelColorValues</span>(
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>coordsT1</span>,
-</span></span><span style=display:flex><span>        {
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>color0</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color1</span>,
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>color1</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color2</span>,
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>color2</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color0</span>,
-</span></span><span style=display:flex><span>        },
-</span></span><span style=display:flex><span>        { <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> }
-</span></span><span style=display:flex><span>      );
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>setPixelColorValues</span>(
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>coordsT2</span>,
-</span></span><span style=display:flex><span>        {
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>color0</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color1</span>,
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>color1</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color2</span>,
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>color2</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color3</span>,
-</span></span><span style=display:flex><span>        },
-</span></span><span style=display:flex><span>        { <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> }
-</span></span><span style=display:flex><span>      );
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>coordsT1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>barycentric_coords</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>, <span style=color:#a6e22e>row0Pix</span>, <span style=color:#a6e22e>col0Pix</span>, <span style=color:#a6e22e>row1Pix</span>, <span style=color:#a6e22e>col1Pix</span>, <span style=color:#a6e22e>row2Pix</span>, <span style=color:#a6e22e>col2Pix</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>coordsT2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>barycentric_coords</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>, <span style=color:#a6e22e>row1Pix</span>, <span style=color:#a6e22e>col1Pix</span>, <span style=color:#a6e22e>row2Pix</span>, <span style=color:#a6e22e>col2Pix</span>, <span style=color:#a6e22e>row3Pix</span>, <span style=color:#a6e22e>col3Pix</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>setPixelColorValues</span>(<span style=color:#a6e22e>coordsT1</span>, {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>color0</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>color1</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>color2</span>,
+</span></span><span style=display:flex><span>      }, { <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> });
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>setPixelColorValues</span>(<span style=color:#a6e22e>coordsT2</span>, {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>color0</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color1</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>color1</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color2</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>color2</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>color3</span>,
+</span></span><span style=display:flex><span>      }, { <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> });
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
@@ -491,27 +470,16 @@ rotateY(angleY);
 </span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setPixelColorValues</span>(<span style=color:#a6e22e>coords</span>, <span style=color:#a6e22e>colors</span>, <span style=color:#a6e22e>pixelIndexes</span>) {
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>pixelIndexes</span>;
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>color0</span>, <span style=color:#a6e22e>color1</span>, <span style=color:#a6e22e>color2</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>colors</span>;
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>g</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>g</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w0</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w2</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>redVal</span> <span style=color:#f92672>=</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color0</span>)) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w2</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color1</span>));
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>greenVal</span> <span style=color:#f92672>=</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color0</span>)) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w2</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color1</span>));
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>blueVal</span> <span style=color:#f92672>=</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color0</span>)) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w2</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color1</span>));
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>alphaVal</span> <span style=color:#f92672>=</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color0</span>)) <span style=color:#f92672>+</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w2</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color1</span>));
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>redVal</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w0</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color0</span>))
+</span></span><span style=display:flex><span>             <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>color1</span>));
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>greenVal</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w0</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color0</span>))
+</span></span><span style=display:flex><span>               <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>color1</span>));
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>blueVal</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w0</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color0</span>))
+</span></span><span style=display:flex><span>              <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>color1</span>));
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>alphaVal</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color0</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w0</span> <span style=color:#f92672>*</span> (<span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color1</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color0</span>))
+</span></span><span style=display:flex><span>               <span style=color:#f92672>+</span> <span style=color:#a6e22e>coords</span>.<span style=color:#a6e22e>w1</span>  <span style=color:#f92672>*</span> (<span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color2</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>color1</span>));
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>pgIndex</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>i</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>earth</span>.<span style=color:#a6e22e>width</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>j</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>COLORS</span>;
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>pixels</span>[<span style=color:#a6e22e>pgIndex</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>r</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>redVal</span>;
 </span></span><span style=display:flex><span>    <span style=color:#a6e22e>pg</span>.<span style=color:#a6e22e>pixels</span>[<span style=color:#a6e22e>pgIndex</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>g</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>greenVal</span>;
@@ -531,12 +499,9 @@ rotateY(angleY);
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>edge_functions</span>(<span style=color:#a6e22e>row</span>, <span style=color:#a6e22e>col</span>, <span style=color:#a6e22e>row0</span>, <span style=color:#a6e22e>col0</span>, <span style=color:#a6e22e>row1</span>, <span style=color:#a6e22e>col1</span>, <span style=color:#a6e22e>row2</span>, <span style=color:#a6e22e>col2</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>e01</span> <span style=color:#f92672>=</span>
-</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>row0</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row1</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col1</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>col0</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col0</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>row1</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row0</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>col1</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>e12</span> <span style=color:#f92672>=</span>
-</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>row1</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row2</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>col1</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col1</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>row2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row1</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>col2</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>e20</span> <span style=color:#f92672>=</span>
-</span></span><span style=display:flex><span>    (<span style=color:#a6e22e>row2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row0</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col0</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>col2</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col2</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>row0</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row2</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>col0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>e01</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>row0</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row1</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col1</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>col0</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col0</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>row1</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row0</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>col1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>e12</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>row1</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row2</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>col1</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col1</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>row2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row1</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>col2</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>e20</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>row2</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row0</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>col</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col0</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>col2</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>row</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>col2</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>row0</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>row2</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>col0</span>);
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> { <span style=color:#a6e22e>e01</span>, <span style=color:#a6e22e>e12</span>, <span style=color:#a6e22e>e20</span> };
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div></div></details><br><div align=center><iframe id=sphereEarth style=width:600px;height:600px srcdoc="
@@ -552,11 +517,10 @@ rotateY(angleY);
             
             <script>
               
-const globe = [];
-const r = 20;
+const figure = [];
 const COLORS = 4;
-const ROWS = 400;
-const COLS = 400;
+const ROWS = 500;
+const COLS = 1000;
 let earth;
 let triangleWidth;
 let triangleHeight;
@@ -564,148 +528,179 @@ let matrix = [];
 
 let pg;
 
-    function preload() {
-      earth = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
-    }
+  function preload() {
+    earth = loadImage('https://lh6.googleusercontent.com/MKWuIXLwcIXgwmrKrnjgCFEjna_8kFePKfWJlhOQLpBZ3pagPVPjxyHxZPHs2CTGMm1sdKLx_WGkjVhnDF_L9EQbata6o2Cw0dtIvNYz-yQG_YJXNfpWff_HbdsNtqkWAia6jwG7aLWDbJbn6w');
+    //earth.loadPixels();
+  }
 
-    function setup() {
-      earth.loadPixels();
-      createCanvas(COLS * earth.width / earth.height, ROWS * earth.width / earth.height);
-      pixelDensity(1);
-      pg = createGraphics(earth.width, earth.height);
-      pg.pixelDensity(1);
+  function setup() {
+    earth.loadPixels();
+    createCanvas(earth.width, earth.height);
+    pixelDensity(1);
+    pg = createGraphics(earth.width, earth.height);
+    pg.pixelDensity(1);
 
-      noLoop();
-      noFill();
-      strokeWeight(2);
-      stroke(200);
+    noLoop(); 
+    noFill();
+    strokeWeight(2);
+    stroke(200);
 
-      triangleWidth = earth.width / COLS;
-      triangleHeight = earth.height / ROWS;
-
-      for (let i = 0; i < earth.height; i++) {
-        matrix.push([]);
-        for (let j = 0; j < earth.width; j++) {
-          matrix[i].push([]);
-          for (let c = 0; c < COLORS; c++) {
-            matrix[i][j][c] = c;
-          }
+    triangleWidth = earth.width / COLS;
+    triangleHeight = earth.height / ROWS;
+    
+    for (let i = 0; i < earth.height; i++) {
+      matrix.push([]);
+      for (let j = 0; j < earth.width; j++) {
+        matrix[i].push([]);
+        for (let c = 0; c < COLORS; c++) {
+          matrix[i][j][c] = c;
         }
       }
-      let index = 0, row = 0, col = 0;
-      while (index < earth.pixels.length && row < earth.height && col < earth.width) {
-        matrix[row][col][index % COLORS] = earth.pixels[index];
-        if ((col + 1) >= earth.width) {
-          row++;
-          col = 0;
-        } else if (index % COLORS == 0) {
-          col = (col + 1) % earth.width;
-        }
-        index++;
+    }
+    let index = 0, row = 0, col = 0;
+    while (index < earth.pixels.length && row < earth.height && col < earth.width) {
+      matrix[row][col][index % COLORS] = earth.pixels[index];
+      if ((col + 1) >= earth.width) {
+        row++;
+        col = 0;
+      } else if (index % COLORS == 0) {
+        col = (col + 1) % earth.width;
       }
-      pg.loadPixels();
-      triangles();
-      pg.updatePixels();
-
+      index++;
     }
-
-    function draw() {
-      background(51);
-      image(pg, 0, 0, width, height);
+    let minX = earth.height * 2;
+    let maxX = 0;
+    for (let i = 0; i < ROWS; i++) {
+      figure[i] = [];
+      for (let j = 0; j < COLS; j++) {
+        const x = i + triangleHeight / 2;
+        const y = j + triangleWidth / 2;
+        minX = min(minX, x);
+        maxX = max(maxX, x);
+        figure[i][j] = createVector(x, y);
+      }
     }
+    print(minX);
+    print(maxX);
+    pg.loadPixels();
+    triangles();
+    pg.updatePixels();
+    image(pg, 0, 0, width, height);
+  }
+
+  function draw() {
+  }
 
 function triangles() {
-for (let i = 0; i < ROWS - 1; i++) {
-for (let j = 0; j < COLS - 1; j++) {
-interpolateTrianglePixels(i, j);
-}
-}
+  for (let i = 0; i < ROWS - 1; i++) {
+    for (let j = 0; j < COLS - 1; j++) {
+      const v = figure[i][j];
+      const xVal = ((v.x - earth.height / 2) * (v.x - earth.height / 2)) / (earth.height * earth.height / 4);
+      const yVal = ((v.y - earth.width / 2) * (v.y - earth.width / 2)) / (earth.width * earth.width / 4);
+      if (xVal + yVal <= 1){
+        
+        interpolateTrianglePixels(i, j);
+      }
+    }
+  }
 }
 
 function interpolateTrianglePixels(row, col) {
-const row0 = row, col0 = col;
-const row1 = row + 1, col1 = col;
-const row2 = row, col2 = col + 1;
-const row3 = row + 1, col3 = col + 1;
-const row0Pix = floor(row0 _ triangleHeight), col0Pix = floor(col0 _ triangleWidth);
-const row1Pix = floor(row1 _ triangleHeight), col1Pix = floor(col1 _ triangleWidth);
-const row2Pix = floor(row2 _ triangleHeight), col2Pix = floor(col2 _ triangleWidth);
-const row3Pix = floor(row3 _ triangleHeight), col3Pix = floor(col3 _ triangleWidth);
-const r = 0, g = 1, b = 2, a = 3;
-const color0 = color(
-matrix[row0Pix][col0pix][r],
-matrix[row0Pix][col0pix][g],
-matrix[row0Pix][col0pix][b],
-matrix[row0Pix][col0pix][a]
-);
-const color1 = color(
-matrix[row1Pix][col1pix][r],
-matrix[row1Pix][col1pix][g],
-matrix[row1Pix][col1pix][b],
-matrix[row1Pix][col1pix][a]
-);
-const color2 = color(
-matrix[row2Pix][col2pix][r],
-matrix[row2Pix][col2pix][g],
-matrix[row2Pix][col2pix][b],
-matrix[row2Pix][col2pix][a]
-);
-const color3 = color(
-matrix[row3Pix][col3pix][r],
-matrix[row3Pix][col3pix][g],
-matrix[row3Pix][col3pix][b],
-matrix[row3Pix][col3pix][a]
-);
-for (let i = row0Pix; i < row3Pix; i++) {
-for (let j = col0Pix; j < col3Pix; j++) {
-let coordsT1 = barycentric_coords(i, j, row0Pix, col0Pix, row1Pix, col1Pix, row2Pix, col2Pix);
-let coordsT2 = barycentric_coords(i, j, row1Pix, col1Pix, row2Pix, col2Pix, row3Pix, col3Pix);
-setPixelColorValues(coordsT1, {
-color0: color1,
-color1: color2,
-color2: color0,
-}, { i, j });
-setPixelColorValues(coordsT2, {
-color0: color1,
-color1: color2,
-color2: color3,
-}, { i, j });
-}
-}
+  const row0 = row,     col0 = col;
+  const row1 = row + 1, col1 = col;
+  const row2 = row,     col2 = col + 1;
+  const row3 = row + 1, col3 = col + 1;
+  const v0 = figure[row0][col0];
+  const v1 = figure[row1][col1];
+  const v2 = figure[row2][col2];
+  const v3 = figure[row3][col3];
+  const row0Pix = floor(v0.x);
+  const col0Pix = floor(v0.y);
+  const row1Pix = floor(v1.x);
+  const col1Pix = floor(v1.y);
+  const row2Pix = floor(v2.x);
+  const col2Pix = floor(v2.y);
+  const row3Pix = floor(v3.x);
+  const col3Pix = floor(v3.y);
+  const r = 0, g = 1, b = 2, a = 3;
+  const color0 = color(
+    matrix[row0Pix][col0Pix][r],
+    matrix[row0Pix][col0Pix][g],
+    matrix[row0Pix][col0Pix][b],
+    matrix[row0Pix][col0Pix][a]
+  );
+  const color1 = color(
+    matrix[row1Pix][col1Pix][r],
+    matrix[row1Pix][col1Pix][g],
+    matrix[row1Pix][col1Pix][b],
+    matrix[row1Pix][col1Pix][a]
+  );
+  const color2 = color(
+    matrix[row2Pix][col2Pix][r],
+    matrix[row2Pix][col2Pix][g],
+    matrix[row2Pix][col2Pix][b],
+    matrix[row2Pix][col2Pix][a]
+  );
+  const color3 = color(
+    matrix[row3Pix][col3Pix][r],
+    matrix[row3Pix][col3Pix][g],
+    matrix[row3Pix][col3Pix][b],
+    matrix[row3Pix][col3Pix][a]
+  );
+  for (let i = row0Pix; i < row3Pix; i++) {
+    for (let j = col0Pix; j < col3Pix; j++) {
+      let coordsT1 = barycentric_coords(i, j, row0Pix, col0Pix, row1Pix, col1Pix, row2Pix, col2Pix);
+      let coordsT2 = barycentric_coords(i, j, row1Pix, col1Pix, row2Pix, col2Pix, row3Pix, col3Pix);
+      setPixelColorValues(coordsT1, {
+        color0,
+        color1,
+        color2,
+      }, { i, j });
+      setPixelColorValues(coordsT2, {
+        color0: color1,
+        color1: color2,
+        color2: color3,
+      }, { i, j });
+    }
+  }
 }
 
 function setPixelColorValues(coords, colors, pixelIndexes) {
-const { i, j } = pixelIndexes;
-const { color0, color1, color2 } = colors;
-const r = 0, g = 1, b = 2, a = 3;
-if (coords.w0 >= 0 && coords.w1 >= 0 && coords.w2 >= 0) {
-redVal = red(color0) + coords.w1 _ (red(color1) - red(color0)) + coords.w2 _ (red(color2) - red(color1));
-greenVal = green(color0) + coords.w1 _ (green(color1) - green(color0)) + coords.w2 _ (green(color2) - green(color1));
-blueVal = blue(color0) + coords.w1 _ (blue(color1) - blue(color0)) + coords.w2 _ (blue(color2) - blue(color1));
-alphaVal = alpha(color0) + coords.w1 _ (alpha(color1) - alpha(color0)) + coords.w2 _ (alpha(color2) - alpha(color1));
-pgIndex = (i _ earth.width + j) _ COLORS;
-pg.pixels[pgIndex + r] = redVal;
-pg.pixels[pgIndex + g] = greenVal;
-pg.pixels[pgIndex + b] = blueVal;
-pg.pixels[pgIndex + a] = alphaVal;
-}
+  const { i, j } = pixelIndexes;
+  const { color0, color1, color2 } = colors;
+  const r = 0, g = 1, b = 2, a = 3;
+  if (coords.w0 >= 0 && coords.w1 >= 0 && coords.w2 >= 0) {
+    redVal = red(color0) + coords.w0 * (red(color1) - red(color0))
+             + coords.w1 * (red(color2) - red(color1));
+    greenVal = green(color0) + coords.w0 * (green(color1) - green(color0))
+               + coords.w1 * (green(color2) - green(color1));
+    blueVal = blue(color0) + coords.w0 * (blue(color1) - blue(color0))
+              + coords.w1 * (blue(color2) - blue(color1));
+    alphaVal = alpha(color0) + coords.w0 * (alpha(color1) - alpha(color0))
+               + coords.w1  * (alpha(color2) - alpha(color1));
+    pgIndex = (i * earth.width + j) * COLORS;
+    pg.pixels[pgIndex + r] = redVal;
+    pg.pixels[pgIndex + g] = greenVal;
+    pg.pixels[pgIndex + b] = blueVal;
+    pg.pixels[pgIndex + a] = alphaVal;
+  }
 }
 
 function barycentric_coords(row, col, row0, col0, row1, col1, row2, col2) {
-let edges = edge_functions(row, col, row0, col0, row1, col1, row2, col2);
-let area = parallelogram_area(row0, col0, row1, col1, row2, col2);
-return { w0: edges.e12 / area, w1: edges.e20 / area, w2: edges.e01 / area };
+  let edges = edge_functions(row, col, row0, col0, row1, col1, row2, col2);
+  let area = parallelogram_area(row0, col0, row1, col1, row2, col2);
+  return { w0: edges.e12 / area, w1: edges.e20 / area, w2: edges.e01 / area };
 }
 
-function parallelogram*area(row0, col0, row1, col1, row2, col2) {
-return (col1 - col0) * (row2 - row0) - (col2 - col0) \_ (row1 - row0);
+function parallelogram_area(row0, col0, row1, col1, row2, col2) {
+  return (col1 - col0) * (row2 - row0) - (col2 - col0) * (row1 - row0);
 }
 
-function edge*functions(row, col, row0, col0, row1, col1, row2, col2) {
-let e01 = (row0 - row1) * col + (col1 - col0) _ row + (col0 _ row1 - row0 _ col1);
-let e12 = (row1 - row2) _ col + (col2 - col1) _ row + (col1 _ row2 - row1 _ col2);
-let e20 = (row2 - row0) _ col + (col0 - col2) _ row + (col2 _ row0 - row2 \_ col0);
-return { e01, e12, e20 };
+function edge_functions(row, col, row0, col0, row1, col1, row2, col2) {
+  let e01 = (row0 - row1) * col + (col1 - col0) * row + (col0 * row1 - row0 * col1);
+  let e12 = (row1 - row2) * col + (col2 - col1) * row + (col1 * row2 - row1 * col2);
+  let e20 = (row2 - row0) * col + (col0 - col2) * row + (col2 * row0 - row2 * col0);
+  return { e01, e12, e20 };
 }
 
             </script>
@@ -955,5 +950,5 @@ return { e01, e12, e20 };
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div></div></details><br><iframe src=https://editor.p5js.org/wnarevalor/full/RKnzfhuFk width=640px height=580px allow="camera *;microphone *"></iframe><br><details><summary>Demo video</summary><div class=markdown-inner><br><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src=https://www.youtube.com/embed/LTw9zqeR2DE style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe></div></div></details><h2 id=iv-conclusiones-1><strong>IV. Conclusiones</strong>
 <a class=anchor href=#iv-conclusiones-1>#</a></h2><p>Para concluir, podemos resaltar en nuestras investigaciones que el sector de la interacción tridimensional entre usuario y máquina es rotundamente interesante desde la extracción de los datos hasta la manipulación y múltiples resultados posibles con estos. Con respecto al Finger Tracking, encontramos que es un campo que sigue en crecimiento y desarrollo a día hoy y su propuesta en términos de interacción vía gestos es ambiciosa, voraz y el camino a seguir. Por último, resaltar iniciativas como MediaPipe y M5l.js que buscan masificar el uso de Inteligencia Artificial y Machine Learning mediante un API sencilla y fácil de implementar en relación a la computación gráfica.<br>Es importante que sigan surgiendo estas iniciativas de código abierto con el fin de educar y avanzar la tecnología para todos.</p><h2 id=v-referencias><strong>V. Referencias</strong>
-<a class=anchor href=#v-referencias>#</a></h2><ul><li>Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. <a href=https://en.wikipedia.org/wiki/Texture_mapping>https://en.wikipedia.org/wiki/Texture_mapping</a>. <a href=https://en.wikipedia.org/wiki/Texture_mapping>Wikipedia</a></li><li>Wikipedia contributors. (2022, mayo 16). Spherical coordinate system. Wikipedia. <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>https://en.wikipedia.org/wiki/Spherical_coordinate_system</a> <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>Wikipedia</a></li><li>Hands. (2022). Mediapipe. <a href=https://google.github.io/mediapipe/solutions/hands>https://google.github.io/mediapipe/solutions/hands</a>. <a href=https://google.github.io/mediapipe/solutions/hands>MediaPipe Hands</a></li><li>Handpose. (2022). ml5.js. <a href=https://learn.ml5js.org/#/reference/handpose>https://learn.ml5js.org/#/reference/handpose</a>. <a href=https://learn.ml5js.org/#/reference/handpose>Ml5.js handpose</a></li><li>Wikipedia contributors. (2021, 29 agosto). Finger tracking. Wikipedia. <a href=https://en.wikipedia.org/wiki/Finger_tracking>https://en.wikipedia.org/wiki/Finger_tracking</a> <a href=https://en.wikipedia.org/wiki/Finger_tracking>Wikipedia</a></li><li>Wikipedia contributors. (2022, marzo 19). 3D pose estimation. Wikipedia. <a href=https://en.wikipedia.org/wiki/3D_pose_estimation>https://en.wikipedia.org/wiki/3D_pose_estimation</a> <a href=https://en.wikipedia.org/wiki/3D_pose_estimation>Wikipedia</a></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/a6f9359be2c6976a7929e6920b5e0b83ebf76096 title="Last modified by Wilson Arevalo | May 23, 2022" target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<a class=anchor href=#v-referencias>#</a></h2><ul><li>Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. <a href=https://en.wikipedia.org/wiki/Texture_mapping>https://en.wikipedia.org/wiki/Texture_mapping</a>. <a href=https://en.wikipedia.org/wiki/Texture_mapping>Wikipedia</a></li><li>Wikipedia contributors. (2022, mayo 16). Spherical coordinate system. Wikipedia. <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>https://en.wikipedia.org/wiki/Spherical_coordinate_system</a> <a href=https://en.wikipedia.org/wiki/Spherical_coordinate_system>Wikipedia</a></li><li>Hands. (2022). Mediapipe. <a href=https://google.github.io/mediapipe/solutions/hands>https://google.github.io/mediapipe/solutions/hands</a>. <a href=https://google.github.io/mediapipe/solutions/hands>MediaPipe Hands</a></li><li>Handpose. (2022). ml5.js. <a href=https://learn.ml5js.org/#/reference/handpose>https://learn.ml5js.org/#/reference/handpose</a>. <a href=https://learn.ml5js.org/#/reference/handpose>Ml5.js handpose</a></li><li>Wikipedia contributors. (2021, 29 agosto). Finger tracking. Wikipedia. <a href=https://en.wikipedia.org/wiki/Finger_tracking>https://en.wikipedia.org/wiki/Finger_tracking</a> <a href=https://en.wikipedia.org/wiki/Finger_tracking>Wikipedia</a></li><li>Wikipedia contributors. (2022, marzo 19). 3D pose estimation. Wikipedia. <a href=https://en.wikipedia.org/wiki/3D_pose_estimation>https://en.wikipedia.org/wiki/3D_pose_estimation</a> <a href=https://en.wikipedia.org/wiki/3D_pose_estimation>Wikipedia</a></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/f2733807b5760d1176c7f92f4e8f2e4edbf496d3 title="Last modified by Jonathan Lopez Castellanos | May 23, 2022" target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
 <span>May 23, 2022</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#texture-mapping-and-finger-tracking-with-ml5-mediapipe-hands><strong>Texture Mapping and Finger Tracking with ML5 MediaPipe Hands</strong></a><ul><li><a href=#texture-mapping><strong>Texture Mapping</strong></a></li><li><a href=#i-introducción><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización><strong>II. Contextualización</strong></a><ul><li><a href=#mapeo-de-alto-nivel><strong>Mapeo de Alto Nivel</strong></a></li><li><a href=#mapeo-de-medio-nivel><strong>Mapeo de Medio Nivel</strong></a></li><li><a href=#mapeo-de-bajo-nivel><strong>Mapeo de Bajo Nivel</strong></a></li></ul></li><li><a href=#iii-resultados><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones><strong>IV. Conclusiones</strong></a></li><li><a href=#finger-tracking-with-mediapipe-hands><strong>Finger Tracking with MediaPipe Hands</strong></a></li><li><a href=#i-introducción-1><strong>I. Introducción</strong></a></li><li><a href=#ii-contextualización-1><strong>II. Contextualización</strong></a></li><li><a href=#iii-resultados-1><strong>III. Resultados</strong></a></li><li><a href=#iv-conclusiones-1><strong>IV. Conclusiones</strong></a></li><li><a href=#v-referencias><strong>V. Referencias</strong></a></li></ul></li></ul></nav></div></aside></main></body></html>
