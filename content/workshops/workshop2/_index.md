@@ -1087,6 +1087,15 @@ function preload() {
 
 {{< h2p5 >}}
 
+<br/>
+
+{{< details title="Demo video" open=false >}}
+<br/>
+
+{{< youtube LTw9zqeR2DE >}}
+
+{{< /details >}}
+
 ## **IV. Conclusiones**
 
 Para concluir, podemos resaltar en nuestras investigaciones que el sector de la interacción tridimensional entre usuario y máquina es rotundamente interesante desde la extracción de los datos hasta la manipulación y múltiples resultados posibles con estos. Con respecto al Finger Tracking, encontramos que es un campo que sigue en crecimiento y desarrollo a día hoy y su propuesta en términos de interacción vía gestos es ambiciosa, voraz y el camino a seguir. Por último, resaltar iniciativas como MediaPipe y M5l.js que buscan masificar el uso de Inteligencia Artificial y Machine Learning mediante un API sencilla y fácil de implementar en relación a la computación gráfica.  
@@ -1097,5 +1106,6 @@ Es importante que sigan surgiendo estas iniciativas de código abierto con el fi
 - Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. https://en.wikipedia.org/wiki/Texture_mapping. [Wikipedia](https://en.wikipedia.org/wiki/Texture_mapping)
 - Wikipedia contributors. (2022, mayo 16). Spherical coordinate system. Wikipedia. https://en.wikipedia.org/wiki/Spherical_coordinate_system [Wikipedia](https://en.wikipedia.org/wiki/Spherical_coordinate_system)
 - Hands. (2022). Mediapipe. https://google.github.io/mediapipe/solutions/hands. [MediaPipe Hands](https://google.github.io/mediapipe/solutions/hands)
+- Handpose. (2022). ml5.js. https://learn.ml5js.org/#/reference/handpose. [Ml5.js handpose](https://learn.ml5js.org/#/reference/handpose)
 - Wikipedia contributors. (2021, 29 agosto). Finger tracking. Wikipedia. https://en.wikipedia.org/wiki/Finger_tracking [Wikipedia](https://en.wikipedia.org/wiki/Finger_tracking)
 - Wikipedia contributors. (2022, marzo 19). 3D pose estimation. Wikipedia. https://en.wikipedia.org/wiki/3D_pose_estimation [Wikipedia](https://en.wikipedia.org/wiki/3D_pose_estimation)
