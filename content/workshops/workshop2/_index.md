@@ -712,7 +712,7 @@ El otro sistema es el basado en captura de la observación o movimiento óptico,
 
 </div>
 
-Para el modelo utilizado en ```MediaPipe Hands``` de M5l.js, se utiliza un seguimiento sin interfaz. Estos seguimientos están construidos con base en estimaciones de secuencias y un modelo de cambio con grados de libertad en las articulaciones conectadas como un cuerpo rígido. Se establece un espacio o grafo de estados con atributos de posición y ángulos para cada dedo funcional, esto con el fin de realizar una estimación. Los procesos comunes en este seguimiento son: 
+Para el modelo utilizado en ```MediaPipe Hands``` de MediaPipe, se utiliza un seguimiento sin interfaz. Estos seguimientos están construidos con base en estimaciones de secuencias y un modelo de cambio con grados de libertad en las articulaciones conectadas como un cuerpo rígido. Se establece un espacio o grafo de estados con atributos de posición y ángulos para cada dedo funcional, esto con el fin de realizar una estimación. Los procesos comunes en este seguimiento son: 
 
   - Substracción del fondo en la imagen. 
   - Convolución de la imagen a una máscara de binarios para segmentar la mano del fondo. 
