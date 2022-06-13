@@ -30,50 +30,21 @@
 </span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>mouseWheel</span>(<span style=color:#a6e22e>event</span>) {
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div></div></details><iframe id=sphere style=width:520px;height:530px srcdoc="
+</span></span></code></pre></div></div></details><iframe id=uv_world style=width:520px;height:530px srcdoc="
         <!DOCTYPE html>
         <html>
           <head>
             <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js></script>
             <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+             <script src=https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js></script> 
             
             
             
-            
-            
-            <script>
-              
-let easycam;
-let uvShader;
-
-function preload() {
-  uvShader = readShader('/sketches/shaders/uv.frag', { matrices: Tree.pmvMatrix, varyings: Tree.texcoords2 });
-}
-
-function setup() {
-  createCanvas(300, 300, WEBGL);
-  textureMode(NORMAL);
-  shader(uvShader);
-}
-
-function draw() {
-  background(200);
-  orbitControl();
-  axes();
-  push();
-  noStroke();
-  quad(-width / 2, -height / 2, width / 2, -height / 2, width / 2, height / 2, -width / 2, height / 2);
-  pop();
-}
-
-function mouseWheel(event) {
-  return false;
-}
-
-            </script>
+            <script src=/sketches/shaders/uv_world.js></script>
           </head>
           <body>
           </body>
         </html>
-      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/0de26b002c3269eda70b5dfd76117a8bbf23b618 title='Last modified by Jonathan López | June 13, 2022' target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
+      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/2277f3a1a2735b03ac4ff1ac6dbde5b083bedbf6 title='Last modified by Jonathan López | June 13, 2022' target=_blank rel=noopener><img src=/VisualComputing-Showcase/svg/calendar.svg class=book-icon alt=Calendar>
 <span>June 13, 2022</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#shaders><strong>Shaders</strong></a></li></ul></nav></div></aside></main></body></html>
