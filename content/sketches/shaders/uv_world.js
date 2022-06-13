@@ -2,7 +2,7 @@ let easycam;
 let uvShader;
 
 function preload() {
-  uvShader = readShader('/showcase/sketches/shaders/uv.frag', { matrices: Tree.pmvMatrix, varyings: Tree.texcoords2 });
+  uvShader = readShader('/sketches/shaders/uv.frag', { matrices: Tree.pmvMatrix, varyings: Tree.texcoords2 });
 }
 
 function setup() {
