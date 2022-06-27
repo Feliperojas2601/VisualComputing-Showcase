@@ -99,7 +99,7 @@ void main() {
 
 <div align="center">
 
-<iframe src="https://editor.p5js.org/Gwynnbleid/full/f5EZ-Q4tN" width="300" height="300"></iframe>
+<iframe src="https://editor.p5js.org/Gwynnbleid/full/f5EZ-Q4tN" width="350" height="350"></iframe>
 
 </div>
 
@@ -222,7 +222,7 @@ void main() {
 
 <div align="center">
 
-<iframe src="https://editor.p5js.org/Gwynnbleid/full/XwK1n9q9x" width="700" height="500"></iframe>
+<iframe src="https://editor.p5js.org/Gwynnbleid/full/XwK1n9q9x" width="750" height="550"></iframe>
 
 </div>
 
@@ -504,7 +504,7 @@ void main() {
 
 <div align="center">
 
-<iframe src="https://editor.p5js.org/Gwynnbleid/full/MmvEaVeaQ" width="900" height="450"></iframe>
+<iframe src="https://editor.p5js.org/Gwynnbleid/full/MmvEaVeaQ" width="650" height="350"></iframe>
 
 </div>
 
@@ -633,7 +633,7 @@ void main (void) {
 
 <div align="center">
 
-<iframe src="https://editor.p5js.org/Gwynnbleid/full/MFhE1B2DQ" width="400" height="400"></iframe>
+<iframe src="https://editor.p5js.org/Gwynnbleid/full/MFhE1B2DQ" width="450" height="450"></iframe>
 
 </div>
 
@@ -719,7 +719,7 @@ void main (void) {
 
 <div align="center">
 
-<iframe src="https://editor.p5js.org/Gwynnbleid/full/xmN1ehUrz" width="400" height="400"></iframe>
+<iframe src="https://editor.p5js.org/Gwynnbleid/full/xmN1ehUrz" width="450" height="450"></iframe>
 
 </div>
 
@@ -845,7 +845,7 @@ void main(void){
 
 <div align="center">
 
-<iframe src="https://editor.p5js.org/Gwynnbleid/full/WstmC3mHn" width="400" height="400"></iframe>
+<iframe src="https://editor.p5js.org/Gwynnbleid/full/WstmC3mHn" width="450" height="450"></iframe>
 
 </div>
 
