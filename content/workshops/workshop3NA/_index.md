@@ -35,22 +35,34 @@ function preload() {
     matrices: Tree.pmvMatrix,
     varyings: Tree.texcoords2,
   });
+  uvShader2 = readShader("uv2.frag", {
+    matrices: Tree.pmvMatrix,
+    varyings: Tree.texcoords2,
+  });
 }
 
 function setup() {
   createCanvas(500, 500, WEBGL);
   textureMode(NORMAL);
-  // use custom shader
-  shader(uvShader);
 }
 
 function draw() {
   background(0);
   orbitControl();
-  push();
+  shader(uvShader2);
   noStroke();
+  quad(
+    -width / 2,
+    -height / 2,
+    width / 2,
+    -height / 2,
+    width / 2,
+    height / 2,
+    -width / 2,
+    height / 2
+  );
+  shader(uvShader);
   triangle(-width / 2, height / 2, width / 2, height / 2, 0, -height / 2);
-  pop();
 }
 
 function mouseWheel(event) {
@@ -94,6 +106,40 @@ void main() {
 // }
 }
 
+```
+
+{{< /details >}}
+
+{{< details title=".frag" open=false >}}
+
+```js
+precision mediump float;
+
+// the texture coordinates varying was defined in
+// the vertex shader by treegl readShader()
+// open your console and & see!
+varying vec2 texcoords2;
+
+void main() {
+
+ gl_FragColor = vec4(0.5, texcoords2.x, texcoords2.y, 1.0);
+
+// if (texcoords2.y > 0.25 && texcoords2.y < 0.50){
+//   gl_FragColor = vec4(texcoords2.x, 0,  texcoords2.y, 1.0);
+// }else if (texcoords2.y > 0.50 && texcoords2.x > 0.50 && texcoords2.x < 0.75){
+//   gl_FragColor = vec4(texcoords2.x, 1,  texcoords2.y, 1.0);
+// }else if (texcoords2.y > 0.75 && texcoords2.x < 0.25 ){
+//   gl_FragColor = vec4(texcoords2.y, 1,  texcoords2.x, 1.0);
+// }else if (texcoords2.y < 0.75 && texcoords2.x > 0.25 && texcoords2.x < 0.50){
+//   gl_FragColor = vec4(texcoords2.x, 0, 1, 1.0);
+// }else if (texcoords2.y < 0.25 && texcoords2.x < 0.50){
+//   gl_FragColor = vec4(texcoords2.x, 1, 0, 1.0);
+// }else if (texcoords2.x > 0.75){
+//   gl_FragColor = vec4(texcoords2.x, 0, texcoords2.y, 1.0);
+// }else{
+//     gl_FragColor = vec4(texcoords2.xy, 0, 1.0);
+// }
+}
 ```
 
 {{< /details >}}
