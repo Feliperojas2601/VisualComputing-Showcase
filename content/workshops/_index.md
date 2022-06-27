@@ -11,3 +11,4 @@ title: Workshops
 - [Workshop 2]({{< relref "/workshops/workshop2" >}})
 - [Workshop 3]({{< relref "/workshops/workshop3" >}})
 - [Workshop 3 - Juan Felipe Rojas Cendales]({{< relref "/workshops/workshop3FR" >}})
+- [Workshop 3 - Nicolas Arevalo Rodriguez]({{< relref "/workshops/workshop3NA" >}})
