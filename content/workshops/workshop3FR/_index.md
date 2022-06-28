@@ -12,14 +12,113 @@ title: Workshop3FR
 
 ## **I. Introducción**
 
-
+Las texturas y su respectivo mapeo en diferentes objetos dan la posibilidad de entender mejor la realidad de estos y modelarlos a nivel de proceso. En esta sección, encontraremos una explicación simple a este proceso y cuáles son los posibles factores, conceptos o parámetros que se deben tener en cuenta cuando se habla de textura, color, formas y mapeo.
 
 ## **II. Contextualización**
 
+En primer lugar, el mapeo UV de una textura a un objeto o forma es el proceso de transformación que afrontan las coordenadas de la textura. Las coordenadas UV como las coordenadas de la imagen o gráfico de textura en dos dimensiones deben mapearse a las coordenadas y, z y x si es el caso de un objeto tridimensional. Para este proceso, los shaders construidos y presentados en este informe utilizan la librería de ``p5.treegl`` para la ubicación de las coordenadas ``Tree.texcoords2``.  
+
+En cuanto al color y cómo se ve este representado a niveles de programación, este se obtiene en el shader desde la textura y utilizando las coordenadas del vertice o de la librería (como en este caso) se obtiene un vector con los valores de color RGB junto con el alpha. En el primer ejemplo construido, realizamos un gradiente utilizando canales de color con una intensidad acorde a las coordenadas y mapeando a un conjunto de elipses en dos dimensiones.
+En el segundo ejemplo construido, utilizamos una imagen como textura y obtenemos el vector de color o texel para la creación de filtros acordes a la luminosidad. El filtro Luma sirve como una referencia a la luminosidad y su implementación está inspirada en la sección de texturing de Visual Computing. El filtro HSV valor V es un ejemplo sencillo ya que toma el mayor valor en los canales de color, mientras que el filtro de interpolado utiliza tanto color como las coordenadas UV para determinar el resultado final del píxel.      
 
 ## **III. Resultados**
 
 La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
+
+{{< details title=".js" open=false >}}
+
+```js
+let uvShader;
+let selection_box;
+
+function preload() {
+  uvShader = readShader('shaders/uv.frag', { matrices: Tree.pmvMatrix, varyings: Tree.texcoords2 });
+}
+
+function setup() {
+  createCanvas(300, 300, WEBGL);
+  noStroke();
+  textureMode(NORMAL);
+  selection_box = createSelect();
+  selection_box.position(10, 10);
+  selection_box.style('color', 'black');
+  selection_box.option('None');
+  selection_box.option('RG');
+  selection_box.option('GB');
+  selection_box.option('RB');
+  selection_box.changed(changeSelection);
+}
+
+function draw() {
+  background(1);
+  shader(uvShader);
+  quad(-width / 2, -height / 2, width / 2, -height / 2, width / 2, height / 2, -width / 2, height / 2);
+  noStroke();
+  for (let i = 0; i < 10; i ++) {
+    shader(uvShader);
+    ellipse(0, 0, 20, 80, 1000);
+    rotate(PI/5);
+  }
+}
+
+function changeSelection() {
+    let val = selection_box.value();
+    if (val == 'RG') {
+        uvShader.setUniform('GB', false);
+        uvShader.setUniform('RB', false);
+        uvShader.setUniform('RG', true);
+    } else if (val == 'GB') {
+        uvShader.setUniform('RG', false);
+        uvShader.setUniform('RB', false);
+        uvShader.setUniform('GB', true);
+    } else if (val == 'RB') {
+        uvShader.setUniform('RG', false);
+        uvShader.setUniform('GB', false);
+        uvShader.setUniform('RB', true);
+    } else {
+        uvShader.setUniform('RG', false);
+        uvShader.setUniform('GB', false);
+        uvShader.setUniform('RB', false);
+    }
+}
+```
+
+{{< /details >}}
+
+<br/>
+
+{{< details title=".frag" open=false >}}
+
+```js
+precision mediump float;
+
+varying vec2 texcoords2;
+uniform bool RG;
+uniform bool GB; 
+uniform bool RB; 
+
+void main() {
+  if(RG) {
+    gl_FragColor = vec4(texcoords2.yx, 0.0, 1.0);
+  } else if (GB) {
+    gl_FragColor = vec4(0.0, texcoords2.xy, 1.0);
+  } else if (RB) {
+    gl_FragColor = vec4(texcoords2.x, 0.0, texcoords2.y, 1.0);
+  } 
+}
+```
+
+{{< /details >}}
+
+<br/>
+
+<div align="center">
+
+<iframe src="https://editor.p5js.org/jrojasce/full/4IdUKC96t" width="310" height="350"></iframe>
+
+</div>
+
+<br/>
 
 {{< details title=".js" open=false >}}
 
@@ -135,20 +234,22 @@ void main() {
 
 </div>
 
-<br/>
-
-
-## **IV. Conclusiones**
-
-
 ## **Image Processing**
 
 ## **I. Introducción**
 
+El procesamiento de imágenes es una actividad en donde se aplican variedades de procesos a imágenes digitales para obtener o generar efectos e información. Esta actividad se realiza a nivel de píxeles y por tanto es computacionalmente costosa dependiendo de la resolución de la imagen.  
+Por tanto, las tarjetas gráficas son el dispositivo ideal para realizar estos procesamientos debido a su capacidad de cómputo y los programas o softwares dedicados deben ser idealmente construidos para que se adapten a este dispositivo y generar así un mejor rendimiento como es el caso de los shaders.     
+
 ## **II. Contextualización**
 
-## **III. Resultados**
+En primer lugar, se generó un efecto BLUR o de desefonque utilizando como guía la convolución presentada en la sección de Image Processing - Visual Computing que utilizaba los 'vecinos' o píxeles alrededor del actual para calcular un resultado dada una máscara o kernel de cierto filtro. La máscara utilizada en BLUR es una específica para generar este efecto: [1 / 16, 1 / 8, 1 / 16, 1 / 8, 1 / 4, 1 / 8, 1 / 16, 1 / 8, 1 / 16]. Es importante notar que la obtención de los vecinos está considerando que para aquellos píxeles en el borde no se obtendrá un resultado distinto en el cálculo de color si el píxel vecino no es encontrado.  
 
+También fue implementado un magnifier o un efecto de lupa, inspirado en un shader de ShaderToy que utiliza un efecto de círculo para el ampliamiento de una región de píxeles sin perder la completitud de la imagen utilizando un parámetro de profundidad y un radio de la región amplificada.  
+
+Por último, utilizamos un cálculo de distancias en el shader mediante la función ``distance()`` para generar un círculo con el aplicado de un filtro y/o máscara de detección de bordes a una región de interés limitada en la imagen que es variable y dependiente de la posición actual del mouse en el programa.  
+
+## **III. Resultados**
 
 La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
 
@@ -363,18 +464,17 @@ void main() {
 
 </div>
 
-<br/>
-
-## **IV. Conclusiones**
-
 ## **Procedural Texturing**
 
 ## **I. Introducción**
 
+Las texturas son comúnmente identificadas como simples imágenes precargadas y sin embargo, es posible generar una textura a partir de un patrón algorítmico y posteriormente realizar el mapeo de este a un objeto o forma. Es necesario utilizar un espacio fuera de pantalla para renderizar y generar la textura y el espacio de pantalla donde se presetarán los resultados del mapeo.    
+
 ## **II. Contextualización**
 
-## **III. Resultados**
+En esta sección fue creada una textura inspirada en un patrón hexagonal tomado de Shadertoy y mapeada a una esfera. Es importante resaltar que el patrón original utiliza el tiempo del programa en segundos como parámetro para la visualización de un fenómeno o ilusión óptica que involucra los colores blanco y negro junto con una percepción de relieve y completitud. Sin embargo, esta adaptación utiliza la posición del mouse en el programa para mapear a valores del 1 a 10 y utilizar una función sinusiodal que reproduce resultados entre 0 y 1 para generar los valores negros y blancos en repetidas ocasiones durante una única interacción completa del mouse en el programa.  
 
+## **III. Resultados**
 
 La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
 
@@ -454,11 +554,14 @@ void main(void) {
 
 ## **IV. Conclusiones**
 
+Para concluir, este informe puede resaltar la importancia y motivación en cuando a renderización en los shaders ya que estos ejercicios son reproducibles de una manera oportuna y eficiente debido al uso del tipo de hardware adecuado. También, es posible resaltar que librerías como p5.js y Treegl son realmente útiles y dan soluciones muy simples a problemáticas complejas como lo es computación visual, es por esto que la reproducción de códigos y creación de shaders es obsoleta si no se tienen unas bases claras en cuanto al medio/bajo nivel de conceptos como la rasterización. 
+
+
 ## **V. Referencias**
 
-- Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. https://en.wikipedia.org/wiki/Texture_mapping. [Wikipedia](https://en.wikipedia.org/wiki/Texture_mapping)
-- Wikipedia contributors. (2022, mayo 16). Spherical coordinate system. Wikipedia. https://en.wikipedia.org/wiki/Spherical_coordinate_system [Wikipedia](https://en.wikipedia.org/wiki/Spherical_coordinate_system)
-- Hands. (2022). Mediapipe. https://google.github.io/mediapipe/solutions/hands. [MediaPipe Hands](https://google.github.io/mediapipe/solutions/hands)
-- Handpose. (2022). ml5.js. https://learn.ml5js.org/#/reference/handpose. [Ml5.js handpose](https://learn.ml5js.org/#/reference/handpose)
-- Wikipedia contributors. (2021, 29 agosto). Finger tracking. Wikipedia. https://en.wikipedia.org/wiki/Finger_tracking [Wikipedia](https://en.wikipedia.org/wiki/Finger_tracking)
-- Wikipedia contributors. (2022, marzo 19). 3D pose estimation. Wikipedia. https://en.wikipedia.org/wiki/3D_pose_estimation [Wikipedia](https://en.wikipedia.org/wiki/3D_pose_estimation)
+- Treegl | Visual Computing. (2022). GitHub - VisualComputing/p5.treegl. GitHub. https://github.com/VisualComputing/p5.treegl [Visual Computing](https://github.com/VisualComputing/p5.treegl)
+- Texturing | Visual Computing. (2022, 7 junio). Visual Computing. https://visualcomputing.github.io/docs/shaders/texturing/ [Visual Computing](https://visualcomputing.github.io/docs/shaders/texturing/)
+- Wikipedia contributors. (2022, 26 abril). Gaussian blur. Wikipedia. https://en.wikipedia.org/wiki/Gaussian_blur [Wikipedia](https://en.wikipedia.org/wiki/Gaussian_blur)
+- Image Processing | Visual Computing. (2022, 6 junio). Visual Computing. https://visualcomputing.github.io/docs/shaders/image_processing/ [Visual Computing](https://visualcomputing.github.io/docs/shaders/image_processing/)
+- Shadertoy. (2022). Magnifier. https://www.shadertoy.com/view/llsSz7 [Shadertoy](https://www.shadertoy.com/view/llsSz7)
+- Shadertoy. (2022). Hexagonal. https://www.shadertoy.com/view/Wstfzj [Shadertoy](https://www.shadertoy.com/view/Wstfzj)
