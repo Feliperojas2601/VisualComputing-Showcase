@@ -12,14 +12,35 @@ title: Workshop3JL
 
 ## **I. Introducción**
 
-
+El coloreo y la texturización consiste en aplicar colores sobre formas o superficies 
+mediante las coordenadas de los triángulos que las conforman. Esto nos permite ampliar
+nuestro abanico de posibilidades a la hora de darle apariencia a los objetos.
 
 ## **II. Contextualización**
 
+Para este ejercicio, se empleó la técnica de mapeo de texturas y colores mediante las
+coordenadas UV. Estas son coordenadas que mapean las coordenadas de un objeto
+a la extensión del rango de valores de una fuente en dos coordenadas (U y V), de manera normalizada.
+Por ejemplo, si la fuente son los colores en formato RGB, usando dos de estas componentes,
+cada una con un rango de valores en el intervalo [0, 255], las coordenadas UV
+mapearán las coordenadas del objeto en cuestión a las coordenadas U (primera componente)
+y V (segunda componente) en un rango de [0, 1].
+
+Si la fuente fuera una textura, mediante una imagen, las coordenada U mapearia el rango de 
+los pixeles de ancho [0, ancho] y la coordenada V haría lo correspondiente con los pixeles de
+alto [0, alto]. Luego, mediante el proceso de rasterización, se toman las coordenadas de los vértices
+del objeto en cuestión y mapeándolas a coordenadas UV se realiza la interpolación del color
+de los fragmentos (pixeles) de la textura de acuerdo a las coordenadas UV de la imagen.
 
 ## **III. Resultados**
 
-La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
+En este ejercicio se busca ilustrar un ejemplo del mapeo de dos de las componentes de color RGB
+a diferentes formas. Para la ilustración de cómo varía la coloración de cada componente a lo largo
+de la forma, se crearon tres formas: un cuadrado que se colorea con los componentes
+rojo - verde (RG), un círculo se colorea con verde - azul (GB) y un triángulo coloreado con
+rojo - azul (RB).
+
+La implementación utilizando p5.js y el editor web se muestra a continuación:
 
 {{< details title="sketch.js" open=false >}}
 
@@ -105,21 +126,40 @@ void main() {
 
 <br/>
 
-
-## **IV. Conclusiones**
-
-## **Texture Sampling**
+## **Texture Sampling y Texture Tinting**
 
 ## **I. Introducción**
 
-
+El filtrado o suavizado de texturas abarca los métodos empleados para reconstruir texturas
+mediante la modificación de los valores de los pixeles de estas de acuerdo a un criterio.
+El tinte de texturas consiste en operar los valores de las componentes RGB de los pixeles
+con información interpolada en estos, como la posición, la luz, y otro tipo de datos
+que se puedan asociar a los vértices de los triángulos que conforman el objeto en cuestión.
 
 ## **II. Contextualización**
 
+En este ejercicio, se explora varias de las técnicas de filtrado de texturas, haciéndo énfasis
+en algunas de las **coloring brightness tools**, específicamente *luma* y *component average*.
+
+Estas técnicas nos permiten obtener información de las texturas que normalmente no es muy
+evitente en su representación de color RGB. Para el caso de *luma*, este filtrado consiste
+en calcular la componente con el mismo nombre, y se emplea para obtener información sobre la **luminosidad**
+de la textura.
+
+El filtro *component average* lo que permite es obtener información respecto a la concentración
+de los componentes de color en cada pixel de una textura, pues se toma el valor de la componente R, G o B
+que sea más alto.
+
+Para la parte de tinte de texturas, se aplicó la siguiente lógica:
+
+- Se reduce el valor de la componente roja en la medida que el pixel se encuentre más alejado a la izquierda (-x) del centro.
+- Se reduce el valor de la componente verde en la medida que el pixel se encuentre más alejado hacia arriba (-y) del centro.
+- Se reduce el valor de la componente azul en la medida que el pixel se encuentre más alejado hacia la derecha (+x) del centro.
+- Se reduce el valor de las tres componentes en la medida que el pixel se encuentre más alejado hacia abajo (+y) del centro.
 
 ## **III. Resultados**
 
-La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
+La implementación utilizando p5.js y el editor web realizada para lo expuesto anteriormente se muestra a continuación:
 
 {{< details title="sketch.js" open=false >}}
 
@@ -228,20 +268,47 @@ void main() {
 
 <br/>
 
-
-## **IV. Conclusiones**
-
-
 ## **Image Processing**
 
 ## **I. Introducción**
 
+El procesamiento de imágenes consiste en el empleo algoritmos para el procesamiento de imágenes digitales,
+con el multitud de fines: para mejorar la calidad de estas, aplicar efectos, obtener información importante,
+compresión, entre otros.
+
 ## **II. Contextualización**
+
+En este ejercicio, el objetivo es experimentar con distintos algoritmos para el procesamiento de imágenes mediante
+la aplicación de efectos en una región específica (que en este caso se determina por la posición del ratón).
+
+El primero de los efectos aplicados es el *magnifier*, que consiste en aplicar un efecto de ampliación de una región
+de la imagen, determinado por la resolución de la misma, y las dimensiones del "lente" o región sobre la cuál se aplica
+dicho efecto magnificador. Este efecto se adaptó del sitio web [Shadertoy - Magnifier de wawan60](https://www.shadertoy.com/view/llsSz7)
+
+El segundo conjunto de efectos se realiza mediante la aplicación de un filtro mediante el uso de *máscaras*, las cuales
+consisten en matrices con las cuales se aplican modificaciones (filtros) a los vecinos de un pixel. Los efectos 
+empleados fueron:
+
+- Blur, que consigue dar un efecto "borroso" a la región de la imagen.
+- Sharpen, que resalta detalles de los límites de un objeto a cambio de un aumento en el ruido de la imagen.
+- Emboss, que aplica un resaltado o ensombrecimiento a los pixeles de una imagen, de acuerdo a los contornos claros / oscuros
+de esta.
+
+El tercer conjunto de efectos aplicado es el del filtrado o suavizado de texturas (presentado
+en el ejercicio anterior). Los efectos aplicados fueron:
+
+- Luma, que toma la componente **luma** de luminosidad de cada pixel.
+- HSV, que colorea los pixeles a partir de sus componentes de matiz, saturación y valor, calculados
+a partir de las componentes RGB.
+- Value, que toma la componente de valor de HSV de cada pixel
+- HSL, que colorea los pixeles a partir de sus componentes de matiz, saturación y luminosidad, calculados
+a partir de las componentes RGB.
+- Ligthness, que toma la componente de luminosidad de HSL de cada pixel.
 
 ## **III. Resultados**
 
 
-La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
+La implementación utilizando p5.js para los efectos anteriormente mencionados se muestra a continuación:
 
 {{< details title="sketch.js" open=false >}}
 
@@ -510,18 +577,43 @@ void main() {
 
 <br/>
 
-## **IV. Conclusiones**
-
 ## **Procedural Texturing**
 
 ## **I. Introducción**
 
+Las texturas procedurales son aquellas que se construyen algorítmicamente en lugar de usar datos predefinidos
+como una imagen, las cuales pueden mapearse a objetos como cualquier otra textura y permiten agregar
+detalles complejos y dinámicos a objetos. Son muy empleadas para generar texturas de elementos naturales como la madera,
+el metal y la piedra. 
+
 ## **II. Contextualización**
+
+Para este ejercicio, se adaptaron tres shaders que implementan patrones generados mediante texturas procedurales de
+[The Book of Shaders](https://thebookofshaders.com/09/), de Patricio González y Jen Lowe.
+
+El primer patrón, llamado **Truchet Tiles**, consiste en la disposición de parejas de elementos geométricos
+de dos colores diferentes intercalados con el objetivo de formar patrones complejos, y que mediante un algoritmo
+se mapee como textura procedural a una superficie (en este ejemplo, un toroide con forma de ovni).
+Al emplear esto junto con la interactividad del ratón, se puede reducir
+el tamaño y la cantidad de estos elementos geométricos y generar recursivamente estructuras fractales.
+
+El segundo patrón consiste en aplicar el mapeo de color mediante dos componentes rgb (visto en el ejercicio 1)
+a los cuadrados que conforman una malla, la cual se mapea a una superficie. En este caso, se empleó el filtro
+HSV a los colores interpolados de los pixeles.
+
+El último patrón es un ejemplo de patrones de "Offset", aquellos patrones que intercalan la configuraciones de los
+objetos geométricos que los componen de acuerdo a una regla preestablecida. En este ejemplo, se ilustra
+el patrón de un muro de ladrillos, donde de acuerdo a la paridad del número de la fila, la posición de los rectángulos
+(ladrillos) posee una compensación con respecto a las filas de distinta paridad.
+
+Además, en este último ejercicio, se usó el filtro HSL para colorear los rectángulos, y adicionalmente, cuando se mueve el ratón
+disminuye el tamaño de estos (y por lo tanto la cantidad necesaria para cubrir la superficie cilíndrica) y cada segundo
+se cambia una de las componentes de color (antes de aplicar el filtro HSL).
 
 ## **III. Resultados**
 
 
-La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
+La implementación utilizando p5.js para los ejemplos anteriores se muestra a continuación:
 
 {{< details title="sketch.js" open=false >}}
 
@@ -853,11 +945,16 @@ void main(void){
 
 ## **IV. Conclusiones**
 
+Los shaders son herramientas muy poderosas y esenciales en todo desarrollo moderno en el área de la computación gráficas,
+permitiendo el renderizado de objetos complejos de manera eficiente y versátil. A través de los ejercicios presentados
+en este taller, se ha obtenido un bagaje introductorio a los posibles usos de los shaders, de una forma incremental
+tanto en conceptos empleados, como en dificultad.
+
 ## **V. Referencias**
 
-- Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. https://en.wikipedia.org/wiki/Texture_mapping. [Wikipedia](https://en.wikipedia.org/wiki/Texture_mapping)
-- Wikipedia contributors. (2022, mayo 16). Spherical coordinate system. Wikipedia. https://en.wikipedia.org/wiki/Spherical_coordinate_system [Wikipedia](https://en.wikipedia.org/wiki/Spherical_coordinate_system)
-- Hands. (2022). Mediapipe. https://google.github.io/mediapipe/solutions/hands. [MediaPipe Hands](https://google.github.io/mediapipe/solutions/hands)
-- Handpose. (2022). ml5.js. https://learn.ml5js.org/#/reference/handpose. [Ml5.js handpose](https://learn.ml5js.org/#/reference/handpose)
-- Wikipedia contributors. (2021, 29 agosto). Finger tracking. Wikipedia. https://en.wikipedia.org/wiki/Finger_tracking [Wikipedia](https://en.wikipedia.org/wiki/Finger_tracking)
-- Wikipedia contributors. (2022, marzo 19). 3D pose estimation. Wikipedia. https://en.wikipedia.org/wiki/3D_pose_estimation [Wikipedia](https://en.wikipedia.org/wiki/3D_pose_estimation)
+- Wikipedia contributors. (2022, 23 junio). UV Mapping. Wikipedia. https://en.wikipedia.org/wiki/UV_mapping. [Wikipedia](https://en.wikipedia.org/wiki/UV_mapping)
+- Wikipedia contributors. (2022, 22 abril). HSL and HSV. Wikipedia. https://en.wikipedia.org/wiki/HSL_and_HSV. [Wikipedia](https://en.wikipedia.org/wiki/HSL_and_HSV)
+- Shadertoy. (2022). Magnifier. https://www.shadertoy.com/view/llsSz7. [Shadertoy](https://www.shadertoy.com/view/llsSz7)
+- EM. (2020). Sharpen Filter in Image Processing. GlobalSino. https://www.globalsino.com/EM/page1371.html [GlobalSino](https://www.globalsino.com/EM/page1371.html)
+- The Book Of Shaders. (2015). Patterns. https://thebookofshaders.com/09/. [The Book Of Shaders](https://thebookofshaders.com/09/)
+
