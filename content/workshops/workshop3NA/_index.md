@@ -8,17 +8,44 @@ title: Workshop3FR
 
 <div style="text-align: justify">
 
+## **I. Introducción**
+
+Segun Patricio Gonzalez & Jen Lowe, los shaders son conjuntos de instrucciones que se ejecutan todas a la vez para cada píxel de la pantalla. Según esto, el código escrito debe comportarse de forma diferente dependiendo de la posición del píxel en la pantalla, operando como una función que recibe una posición y devuelve un color, y cuando se compila se ejecuta extraordinariamente rápido, esto debido a la capacidad de cómputo de las GPU, que realizan cálculos sobre hardware paralelo y funciones matemáticas especiales aceleradas por el mismo, en lugar de software.
+
+Hay diferentes tipos de shaders, pero hay dos que se utilizan habitualmente para crear gráficos en la web: Vertex Shaders y Fragment Shaders. Los Vertex Shaders transforman las posiciones de las formas en coordenadas de dibujo 3D. Los Fragment Shaders calculan las representaciones de los colores de una forma y otros atributos.
+
+GLSL es el estándar específico de los shaders; el lenguaje Shader tiene una única función principal que devuelve un color al final, este color del píxel se asigna a la variable global reservada `gl_FragColor`, la cual contiene cuatro argumentos correspondientes a los canales rojo, verde, azul y alfa, valores que están normalizados.
+Este lenguaje incorpora además de variables (como gl_FragColor), funciones y tipos, como vec4 que representa un vector de cuatro dimensiones (similarmente existen vec3 y vec2, o tipos reconocidos como float o bool).
+
+La GPU gestiona un gran número de hilos paralelos, cada uno responsable de asignar el color a una fracción de la imagen total, y aunque cada hilo paralelo es ciego a los demás, se necesita poder enviar algunas entradas de la CPU a todos los hilos. Estas entradas van a ser uniformes a todos los hilos siguiendo la arquitectura de la tarjeta gráfica y se establecen como de sólo lectura. Estas entradas se llaman uniformes y se verán comunmente en cada implementación de fragment shader, por ejemplo u_time que lleva el tiempo en milisegundos desde el inicio del programa o uResolution que especifica el tamaño del canvas.
+
+Similar a como GLSL otorga una salida por defecto, gl_FragColor, también otorga una entrada por defecto, `gl_FragCoord`, que contiene las coordenadas de pantalla del píxel o fragmento de pantalla sobre el que está trabajando el hilo activo. Con gl_FragCoord, se sabe dónde está trabajando un hilo dentro del billboard. Debido a que las coordenadas
+son diferentes de un hilo a otro, en su lugar gl_FragCoord se denomina variante.
+
+Para leer shaders desde p5.js se hace uso de la librería `p5.treegl`, mediante la función `readShader`, que carga un fragment shader desde la ruta del archivo y
+devuelve un shader de p5. Esta recibe además la precisión de los flotantes del vertex shader, las matrices uniformes del vertex shader y los atributos del vertex shader para ser interpoladas al fragment shader. El vertex shader detrás del p5.shader se genera automáticamente a partir de una llamada a otra función denominada `parseVertexShader`.
+
 ## **Texturing and Coloring**
 
 ## **I. Introducción**
 
+Una textura es una imagen mapeada sobre la superficie de una forma. El mapeo de imagenes en diferentes objetos en espacios bidimensionales y tridimensionales se puede realizar de diferentes formas en GLSL, esto se explorará a continuación.
+
 ## **II. Contextualización**
+
+Para el caso de visualización UV, la textura se define en el llamado espacio uv. Las letras "U" y "V" denotan los ejes de la textura 2D resultado del mapeo realizado, porque "X", "Y" y "Z" ya se utilizan para denotar los ejes del objeto 3D en model space. Así, las coordenadas de cada vértice `texcoords2`, de dos formas diferentes son mapeadas en cada fragment shader para representar un color determinado, creando un tipo de gradiente del color.
+
+Por otro lado, el muestreo de una textura específica en coordenadas de vértice dadas requiere la llamada a `glsl texture2D` dentro del shader.
+La función texture2D devuelve un texel, es decir, el valor de color de la textura para las coordenadas dadas. La función tiene un parámetro de entrada del tipo sampler2D y un parámetro de entrada del tipo vec2, correspondientes al uniforme al que está ligada la textura y las coordenadas bidimensionales del texel a buscar respectivamente.
+Esta es utilizada entonces para calcular una visualización de la luminosidad de una imagen dada, por ejemplo.
+
+Así, para la segunda implementación realizada, se muestrea una textura específica, de manera que el texel obtenido se opera de diferentes formas para aplicar un filtro a la imagen inicial. Se implementaron entonces cinco casos diferentes: inversión de los colores de cada pixel, obtención del valor `HSV V` de un pixel, obtención del valor `HSL L` o luminosidad del HSL, obtención del luma de un pixel y reducción de los canales rojo, verde y/o azul de un pixel mediante sliders respectivamente.
 
 ## **III. Resultados**
 
-La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
+La implementación utilizando p5.js, y el editor web, realizada para los casos anteriores se muestra a continuación:
 
-{{< details title=".js" open=false >}}
+{{< details title="sketch.js" open=false >}}
 
 ```js
 let easycam;
@@ -75,7 +102,7 @@ function mouseWheel(event) {
 
 <br/>
 
-{{< details title=".frag" open=false >}}
+{{< details title="uv.frag" open=false >}}
 
 ```js
 precision mediump float;
@@ -110,7 +137,7 @@ void main() {
 
 {{< /details >}}
 
-{{< details title=".frag" open=false >}}
+{{< details title="uv2.frag" open=false >}}
 
 ```js
 precision mediump float;
@@ -154,7 +181,7 @@ void main() {
 
 <br/>
 
-{{< details title=".js" open=false >}}
+{{< details title="sketch.js" open=false >}}
 
 ```js
 let lumaShader;
@@ -232,7 +259,7 @@ function draw() {
 
 <br/>
 
-{{< details title=".frag" open=false >}}
+{{< details title="luma.frag" open=false >}}
 
 ```js
 
@@ -291,127 +318,32 @@ void main() {
 
 <br/>
 
-## **IV. Conclusiones**
-
 ## **Image Processing**
 
 ## **I. Introducción**
 
+El procesamiento digital de imágenes es el uso de un ordenador digital para procesar imágenes digitales mediante un algoritmo.
+Algunas transformaciones de imágenes digitales son
+
+- Filtrado: Se utilizan para difuminar, dar nitidez a las imágenes digitales u otros efectos.
+  Este filtrado se puede realizar mediante matrices de convolución específicamente diseñados en el dominio espacial o enmascaramiento de regiones de frecuencia específicas en el dominio de la frecuencia.
+- Transformaciones afines: Permiten transformaciones básicas de la imagen, incluyendo escalamiento, rotación, traslación, reflejo y cizallamiento, como se ha visto en las lecciones anteriores.
+- Desnaturalización de imágenes con morfología: Permiten la eliminación de ruido de las imágenes.
+
+Para este caso se realizó filtering mediante mascaras, de manera que se tienen en cuenta las coordenadas de textura de los pixeles vecinos.
+
 ## **II. Contextualización**
+
+Como se ha mencionado en sesiones de clase, en WEBGL la textura se utiliza para implementar el procesamiento de imágenes y como se sabe hacer referencia a otros píxeles, se utilizaron matrices de convolución 3x3, en la que cada entrada de la matriz representa cuánto hay que multiplicar los 8 píxeles alrededor del píxel que estamos renderizando.
+Según esto, se aplicaron las matrices `[-1, -1, -1, -1, 8, -1, -1, -1, -1]`, `[1, 2, 1, 0, 0, 0, -1, -2, -1]`, `[-2, -1, 0, -1, 1, 1, 0, 1, 2]` para obtener filtros de blanco y negro, sobel horizontal y realzado respectivamente, las cuales fueron tomadas de _WebGLFundamentals_. Se utilizó la función `distance` de glsl para evidenciar el efecto de las máscaras en una región circular de la imagen que depende de la posición del mouse. Similarmente, se aplicaron otros efectos a la región como luma y el valor HSV V.
+
+Además, se implementó un efecto de lupa que amplía una región de pixeles con un radio y profundidad definidos. La implementación realizada fue basada en un shader realizado por el usuario _wawan60_ en la plataforma Shadertoy, la cual se encuentra en el siguiente enlace: https://www.shadertoy.com/view/llsSz7
 
 ## **III. Resultados**
 
-La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
+La implementación utilizando p5.js, y el editor web, realizada para los casos anteriores se muestra a continuación:
 
-{{< details title=".js" open=false >}}
-
-```js
-let maskShader;
-let img;
-let luma;
-let video_src;
-let video_on;
-let mask;
-
-function preload() {
-  maskShader = readShader("mask.frag", {
-    varyings: Tree.texcoords2,
-  });
-
-  //source: https://kushfineart.com/artworks/categories/8/9501-metamorphosis-ii/
-  img = loadImage("images/metamorphosis.jpg");
-}
-
-function setup() {
-  // shaders require WEBGL mode to work
-  createCanvas(650, 550, WEBGL);
-  noStroke();
-  textureMode(NORMAL);
-  mask = createCheckbox("magnifier", false);
-  mask.position(10, 10);
-  mask.style("color", "white");
-  shader(maskShader);
-  maskShader.setUniform("texture", img);
-  emitTexOffset(maskShader, img, "texOffset");
-}
-
-function draw() {
-  background(0);
-  if (mask.checked()) {
-    maskShader.setUniform("magnifier", mask.checked());
-    const mx = map(mouseX, 0, width, 0.0, 1.0);
-    const my = map(mouseY, 0, height, 0.0, 1.0);
-    maskShader.setUniform("uResolution", [width, height]);
-    maskShader.setUniform("uMouse", [mx, my]);
-  } else {
-    maskShader.setUniform("magnifier", mask.checked());
-  }
-
-  quad(
-    -width / 2,
-    -height / 2,
-    width / 2,
-    -height / 2,
-    width / 2,
-    height / 2,
-    -width / 2,
-    height / 2
-  );
-}
-```
-
-{{< /details >}}
-
-<br/>
-
-{{< details title=".frag" open=false >}}
-
-```js
-//adapted from https://www.shadertoy.com/view/llsSz7 by wawan60
-precision mediump float;
-
-uniform sampler2D texture;
-uniform vec2 texOffset;
-uniform vec2 uMouse;
-uniform bool magnifier;
-uniform vec2 uResolution;
-
-// we need our interpolated tex coord
-varying vec2 texcoords2;
-
-const float radius=.5;
-const float depth=radius/1.8;
-
-void main() {
-
-  vec4 texel = texture2D(texture, texcoords2);
-  vec2 uv = gl_FragCoord.xy/(uResolution.xy);
-	vec2 center = vec2(uMouse.x, 1.0 - uMouse.y);
-	float ax = ((uv.x - center.x)* (uv.x - center.x)) / (0.2 * 0.2) + ((uv.y - center.y) * (uv.y - center.y)) / (0.1/ (  uResolution.x / uResolution.y )) ;
-	float dx = (-depth/radius)*ax + (depth/(radius*radius))*ax*ax;
-  float f =  (ax + dx);
-	if (ax > radius) f = ax;
-  vec2 magnifierArea = center + (uv-center)*f/ax;
-  vec2 magnifier_r = vec2(magnifierArea.x, 1.0 - magnifierArea.y);
-  vec4 color = texture2D(texture, magnifier_r);
-
-  gl_FragColor = magnifier ? vec4(color.rgb, 1.0) : vec4(texel.rgb, 1.0);
-}
-```
-
-{{< /details >}}
-
-<br/>
-
-<div align="center">
-
-<iframe src="https://editor.p5js.org/wnarevalor/full/Frzgf12RT" width="650" height="550"></iframe>
-
-</div>
-
-<br/>
-
-{{< details title=".js" open=false >}}
+{{< details title="sketch.js" open=false >}}
 
 ```js
 let maskShader;
@@ -491,7 +423,7 @@ function draw() {
 
 <br/>
 
-{{< details title=".frag" open=false >}}
+{{< details title="mask.frag" open=false >}}
 
 ```js
 #ifdef GL_ES
@@ -594,19 +526,130 @@ void main() {
 
 <br/>
 
-## **IV. Conclusiones**
+{{< details title="sketch.js" open=false >}}
+
+```js
+let maskShader;
+let img;
+let luma;
+let video_src;
+let video_on;
+let mask;
+
+function preload() {
+  maskShader = readShader("mask.frag", {
+    varyings: Tree.texcoords2,
+  });
+
+  //source: https://kushfineart.com/artworks/categories/8/9501-metamorphosis-ii/
+  img = loadImage("images/metamorphosis.jpg");
+}
+
+function setup() {
+  // shaders require WEBGL mode to work
+  createCanvas(650, 550, WEBGL);
+  noStroke();
+  textureMode(NORMAL);
+  mask = createCheckbox("magnifier", false);
+  mask.position(10, 10);
+  mask.style("color", "white");
+  shader(maskShader);
+  maskShader.setUniform("texture", img);
+  emitTexOffset(maskShader, img, "texOffset");
+}
+
+function draw() {
+  background(0);
+  if (mask.checked()) {
+    maskShader.setUniform("magnifier", mask.checked());
+    const mx = map(mouseX, 0, width, 0.0, 1.0);
+    const my = map(mouseY, 0, height, 0.0, 1.0);
+    maskShader.setUniform("uResolution", [width, height]);
+    maskShader.setUniform("uMouse", [mx, my]);
+  } else {
+    maskShader.setUniform("magnifier", mask.checked());
+  }
+
+  quad(
+    -width / 2,
+    -height / 2,
+    width / 2,
+    -height / 2,
+    width / 2,
+    height / 2,
+    -width / 2,
+    height / 2
+  );
+}
+```
+
+{{< /details >}}
+
+<br/>
+
+{{< details title="mask.frag" open=false >}}
+
+```js
+//adapted from https://www.shadertoy.com/view/llsSz7 by wawan60
+precision mediump float;
+
+uniform sampler2D texture;
+uniform vec2 texOffset;
+uniform vec2 uMouse;
+uniform bool magnifier;
+uniform vec2 uResolution;
+
+// we need our interpolated tex coord
+varying vec2 texcoords2;
+
+const float radius=.5;
+const float depth=radius/1.8;
+
+void main() {
+
+  vec4 texel = texture2D(texture, texcoords2);
+  vec2 uv = gl_FragCoord.xy/(uResolution.xy);
+	vec2 center = vec2(uMouse.x, 1.0 - uMouse.y);
+	float ax = ((uv.x - center.x)* (uv.x - center.x)) / (0.2 * 0.2) + ((uv.y - center.y) * (uv.y - center.y)) / (0.1/ (  uResolution.x / uResolution.y )) ;
+	float dx = (-depth/radius)*ax + (depth/(radius*radius))*ax*ax;
+  float f =  (ax + dx);
+	if (ax > radius) f = ax;
+  vec2 magnifierArea = center + (uv-center)*f/ax;
+  vec2 magnifier_r = vec2(magnifierArea.x, 1.0 - magnifierArea.y);
+  vec4 color = texture2D(texture, magnifier_r);
+
+  gl_FragColor = magnifier ? vec4(color.rgb, 1.0) : vec4(texel.rgb, 1.0);
+}
+```
+
+{{< /details >}}
+
+<br/>
+
+<div align="center">
+
+<iframe src="https://editor.p5js.org/wnarevalor/full/Frzgf12RT" width="650" height="550"></iframe>
+
+</div>
+
+<br/>
 
 ## **Procedural Texturing**
 
 ## **I. Introducción**
 
+El texturizado procedimental busca generar una textura utilizando una descripción matemática o un algoritmo en lugar de datos almacenados directamente como una imagen, de manera que el resultado puede ser mapeado en una forma como una textura cualquiera. Este tipo de texturas se suelen utilizar para modelar representaciones superficiales o volumétricas de elementos naturales como la madera, el mármol, el granito, el metal, la piedra y otros. El texturizado procedimental requiere el uso de un objeto frame buffer que en p5.js se implementa como un objeto p5.Graphics.
+
 ## **II. Contextualización**
+
+Para este caso, se utilizan dos texturas similares tomadas de Shadertoy, implementadas por Inigo Quilez (co-creador de Shadertoy), las cuales son mapeadas a una caja o cubo de p5.
+Ambas texturas utilizan el tiempo del programa `(función millis() de p5.js)` para cambiar la variable uniforme en el shader que permite simular el movimiento de la textura.
 
 ## **III. Resultados**
 
 La implementación utilizando p5.js y el editor web realizada para los casos anteriores se muestra a continuación:
 
-{{< details title=".js" open=false >}}
+{{< details title="sketch.js" open=false >}}
 
 ```js
 let pg;
@@ -633,13 +676,12 @@ function setup() {
   pg.shader(truchetShader);
   pg.emitResolution(truchetShader);
   truchetShader.setUniform("u_zoom", 3);
-  pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
-
-  texture(pg);
 }
 
 function draw() {
   background(33);
+  pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
+  texture(pg);
   orbitControl();
   // rotateX(millis() / 1000);
   // rotateY(millis() / 1000);
@@ -658,9 +700,10 @@ function mouseMoved() {
 
 <br/>
 
-{{< details title=".frag" open=false >}}
+{{< details title="truchet.frag" open=false >}}
 
 ```js
+// Author @iq - (https://iquilezles.org) - 2013
 //taken from https://www.shadertoy.com/view/lsl3RH
 #ifdef GL_ES
 precision mediump float;
@@ -778,10 +821,11 @@ void main(void )
 
 <br/>
 
-{{< details title=".frag" open=false >}}
+{{< details title="truchet.frag" open=false >}}
 
 ```js
-//taken from https://www.shadertoy.com/view/4s23zz
+// Author @iq - (https://iquilezles.org) - 2013
+//Taken from https://www.shadertoy.com/view/4s23zz
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -948,6 +992,16 @@ void main(void )
 
 ## **IV. Conclusiones**
 
+Se evidenció claramente como el uso de shaders para operaciones como el procesamiento de imágenes, el mapeo de texturas y el texturizado procedimental permite la obtención de resultados altamente eficientes, debido a la capacidad de cómputo de las GPU y los cálculos sobre hardware, comparados con este mismo tipo de procedimientos basados en implementaciones de software. Además, se pudo aprovechar el uso de librerías como p5.treegl que facilitan bastante procedimientos que de otra forma serían más complejos, como la lectura de shaders únicamente con el fragment shader mediante la función readShader de la misma librería, o la manipulación espacial que nos otorga p5.js con el método orbitControl para formas tridimensionales. Similarmente, fue posible evidenciar que existe un gran repertorio de contenido respecto a shaders creado por la comunidad, el cual es sumamemnte útil para aprender y experimentar la manipulación y creación de imágenes digitales.
+
 ## **V. Referencias**
 
-- Wikipedia contributors. (2022, 22 abril). Texture mapping. Wikipedia. https://en.wikipedia.org/wiki/Texture_mapping. [Wikipedia](https://en.wikipedia.org/wiki/Texture_mapping)
+- Patricio Gonzalez Vivo. (2015). The Book of Shaders. [Getting Started](https://thebookofshaders.com/01/)
+- Visual Computing. (2022). Texturing/ Image Processing/ Procedural Texturing. [Visual Computing Website](https://visualcomputing.github.io/docs/shaders/)
+- Wikipedia contributors. (2022). Texture mapping. Wikipedia. [Wikipedia](https://en.wikipedia.org/wiki/Texture_mapping)
+- Wikipedia contributors. (2022). Digital image processing. Wikipedia. [Wikipedia](https://en.wikipedia.org/wiki/Digital_image_processing)
+- Nakednous & dangulos @github. (2022). VisualComputing/p5.treegl. [p5.treegl](https://github.com/VisualComputing/p5.treegl)
+- WebGLFundamentals. (2015). WebGL Image Processing. [WebGLFundamentals](https://webglfundamentals.org/webgl/lessons/webgl-image-processing.html#toc)
+- Wawan60. (2015). Shadertoy - Magnifier. [Source](https://www.shadertoy.com/view/llsSz7)
+- Inigo Quilez. (2013). Shadertoy - Warping - procedural 1. [Source](https://www.shadertoy.com/view/4s23zz)
+- Inigo Quilez. (2013). Shadertoy - Warping - procedural 2. [Source](https://www.shadertoy.com/view/lsl3RH)
